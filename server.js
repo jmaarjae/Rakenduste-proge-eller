@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "static", "index.html"));
@@ -9,4 +9,7 @@ app.get("/", (req, res) => {
 
 app.use(express.static('static'));
 
-app.listen(PORT, () => console.log(`Example app listening on PORT ${PORT}!`));
+//Cuz Heroku needs process.env.PORT
+app.listen(process.env.PORT || PORT, () => {
+  console.log("Server started", PORT);
+});
