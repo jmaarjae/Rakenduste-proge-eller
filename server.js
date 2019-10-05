@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "static", "index.html"));
 });
 
-app.use(express.static('static'));
+app.use(express.static("static"));
 
 //Cuz Heroku needs process.env.PORT
 app.listen(process.env.PORT || PORT, () => {
