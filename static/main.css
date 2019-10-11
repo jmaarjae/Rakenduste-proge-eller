@@ -14,18 +14,19 @@ body {
   width: 50px;
 }
 .headerButtons {
-  width: 200px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
 }
 .content {
   display: flex;
   justify-content: space-around;
+  
 }
 .item:hover {
   transition: 0.6s all;
   cursor: pointer;
-  box-shadow: 0px 2px 6px 0px rgba(63, 48, 0, 0.5);
+  box-shadow: 0px 2px 6px 0px rgba(90, 69, 1, 0.5);
 }
 .item {
   box-shadow: 0px 2px 6px 0px rgba(247, 195, 25, 0.5);
@@ -39,10 +40,18 @@ body {
   color: darkred;
   font-size: 18px;
 }
-.itemPrice {
+.itemCost {
   color: rgb(255, 86, 86);
   font-size: 14px;
 }
 .content a{
     text-decoration: none;
+}
+.itemContainer{
+  box-shadow: 0px 2px 6px 0px rgba(90, 69, 1, 0.5);
+  width: 90%;
+  padding: 20px 25px;
+}
+.itemContainer .itemPageImage{
+  width: 200px;
 }
