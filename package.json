@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "webpack",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "start:dev": "webpack-dev-server --open --mode=\"development\"",
     "babel": "./node_modules/.bin/babel babel_demo/examples.js --out-dir babel_demo/out",
     "lint": "eslint --version"
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-eslint": "^10.0.3",
