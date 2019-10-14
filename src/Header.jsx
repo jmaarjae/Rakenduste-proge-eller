@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//import "./header.css";
 
 const Header = () => {
   return (
@@ -8,6 +9,7 @@ const Header = () => {
         <img className="headerLogo" src="/images/Logo.jpg" />
       </Link>
       <div className="headerButtons">
+        <img src="/images/user.svg"/>
         <button>Login/Signup</button>
         <button>Cart</button>
       </div>
@@ -16,3 +18,4 @@ const Header = () => {
 };
 
 export default Header;
+
