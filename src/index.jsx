@@ -1,13 +1,11 @@
-//const utils2 = require("./utils2");
+import React from "react";
+import ReactDOM from "react-dom";
+import Header from "./Header.jsx";
+import ItemList from "./ItemList.jsx";
+
+const root = document.getElementById("app");
 
 const digitalPianos = [
-  {
-    imgSrc:
-      "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg",
-    title: "Push-Pull-Cover Keyboard Piano 88-Key Digital Hammer DP-320",
-    price: "US $4,588.88",
-    category: "Buy digital piano and get free shipping on AliExpress.com"
-  },
   {
     imgSrc:
       "https://s.alicdn.com/@sc01/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg_220x220.jpg_.webp",
@@ -166,8 +164,6 @@ const digitalPianos = [
     category: "Buy digital piano and get free shipping on AliExpress.com"
   }
 ];
-
-//www.aliexpress.com/af/digital%25252dpiano.html?SearchText=digital%252dpiano&d=y&CatId=100005392&origin=n&spm=a2g0o.productlist.0.0.61841196dJwVSK&isViewCP=y&jump=afs&switch_new_app=y
 
 const guitars = [
   {
@@ -364,49 +360,48 @@ const guitars = [
   }
 ];
 
-//www.aliexpress.com/af/guitar.html?SearchText=guitar&d=y&initiative_id=AS_20191013022952&origin=n&catId=100005413&isViewCP=y&jump=afs&switch_new_app=y
+class App extends React.PureComponent {
 
-const categories = {
-  DigitalPiano: "digitalPianos",
-  Guitar: "guitars"
-};
-
-//initial state
-let selectedCategory = categories.DigitalPiano;
-
-function createItems() {
-  //console.log("createItems", selectedCategory);
-  const root = document.getElementById("itemsList");
-
-  root.innerHTML = null; //reset
-
-  let items = [];
-
-  if (selectedCategory === categories.DigitalPiano) {
-    items = digitalPianos;
-    //console.log("set digital pianos");
-  } else if (selectedCategory === categories.Guitar) {
-    items = guitars;
-    //console.log("set guitars");
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: digitalPianos
+    }
   }
-  items.forEach(item => {
-    //console.log("drawing");
-    const element = createItemElement(item);
-    root.append(element);
-  });
-}
 
-function setUpCategoryListener() {
-  const dropdown = document.getElementById("categoryDropdown");
-  dropdown.addEventListener("change", event => {
+  handleChange(event){
     console.log(event.target.value);
-    selectedCategory = event.target.value;
-    createItems();
-  });
+    switch(event.target.value) {
+      case "digitalPianos":{
+        this.setState({
+          items: digitalPianos,
+        })
+        break;
+      }
+      case "guitars":{
+        this.setState({
+          items: guitars,
+        })
+        break;
+      }
+    }
+  };
+
+  render(){
+    return (
+      <>
+        <Header />
+        <select onChange={this.handleChange.bind(this)}>
+          <option value="digitalPianos">Digital Pianos</option>
+          <option value="guitars">Guitars</option>
+        </select>
+        <ItemList items={this.state.items} />
+      </>
+    )
+  }
 }
 
-window.addEventListener("load", () => {
-  console.log("hello world!");
-  createItems();
-  setUpCategoryListener();
-});
+ReactDOM.render(
+  <App/>, 
+  root
+);
