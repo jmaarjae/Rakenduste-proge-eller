@@ -21,7 +21,7 @@ const digitalPianos = [{imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fm
 {imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg", title: "Toys Electric-Piano Piano-Girl Multifunctional 37-Keys Children's", price: "US $197.76", category: "Buy digital piano and get free shipping on AliExpress.com"},
 {imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg", title: "Wind maintenance tools Pipe repair workbench Wind maintenance vise", price: "US $190", category: "Buy digital piano and get free shipping on AliExpress.com"},
 {imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg", title: "Toy Keyboard Piano-Keys Teacher Beginner Introduction Multi-Function Adult Children 61", price: "US $189", category: "Buy digital piano and get free shipping on AliExpress.com"},
-{imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg", title: "Worlde Panda200 Professional USB 16 Drum Pads MIDI Keyboard Controller With USB Cable", price: "US $169", category: "Buy digital piano and get free shipping on AliExpress.com"}]
+{imgSrc: "https://sc01.alicdn.com/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg", title: "Worlde Panda200 Professional USB 16 Drum Pads MIDI Keyboard Controller With USB Cable", price: "US $169", category: "Buy digital piano and get free shipping on AliExpress.com"}];
 
 //www.aliexpress.com/af/digital%25252dpiano.html?SearchText=digital%252dpiano&d=y&CatId=100005392&origin=n&spm=a2g0o.productlist.0.0.61841196dJwVSK&isViewCP=y&jump=afs&switch_new_app=y
 
@@ -49,14 +49,14 @@ const guitars = [{imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6y
 {imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6yovpXad/OEM-China-Factory-40-41-inch-colorful.jpg_220x220.jpg_.webp", title: "Mahogany Guitar Pickup Enya Musical-Instruments Solid 40inch with Engelman Spruce", price: "US $580 - 640.80", category: "Buy guitar and get free shipping on AliExpress.com"},
 {imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6yovpXad/OEM-China-Factory-40-41-inch-colorful.jpg_220x220.jpg_.webp", title: "Beginner Guitar Mahogany Acoustic 6-Strings Rosewood Red 40-Pine Mute Students", price: "US $873.27", category: "Buy guitar and get free shipping on AliExpress.com"},
 {imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6yovpXad/OEM-China-Factory-40-41-inch-colorful.jpg_220x220.jpg_.webp", title: "Forestwind guitar Double Neck 1275 model Electric guitar 6 string+12 string Combo", price: "US $1,000 - 1,300", category: "Buy guitar and get free shipping on AliExpress.com"},
-{imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6yovpXad/OEM-China-Factory-40-41-inch-colorful.jpg_220x220.jpg_.webp", title: "Suneye Guitar Black Handed Electrica Dean-Style Rosewood Fretboard Glossy-Finish Left", price: "US $398.70", category: "Buy guitar and get free shipping on AliExpress.com"}]
+{imgSrc: "https://s.alicdn.com/@sc01/kf/HTB1pkpTbsTxK1Rjy0Fgq6yovpXad/OEM-China-Factory-40-41-inch-colorful.jpg_220x220.jpg_.webp", title: "Suneye Guitar Black Handed Electrica Dean-Style Rosewood Fretboard Glossy-Finish Left", price: "US $398.70", category: "Buy guitar and get free shipping on AliExpress.com"}];
 
 //www.aliexpress.com/af/guitar.html?SearchText=guitar&d=y&initiative_id=AS_20191013022952&origin=n&catId=100005413&isViewCP=y&jump=afs&switch_new_app=y
 
 const categories = {
     DigitalPiano: "digitalPianos",
     Guitar: "guitars",
-}
+};
 
 //initial state
 let selectedCategory = categories.DigitalPiano;
@@ -82,12 +82,12 @@ function createItems(){
         //console.log("drawing");
         const element = utils.createItemElement(item);
         root.append(element);
-    })
+    });
 }
 
 function setUpCategoryListener(){
     const dropdown = document.getElementById("categoryDropdown");
-    dropdown.addEventListener('change', (event) => {
+    dropdown.addEventListener("change", (event) => {
         console.log(event.target.value);
         selectedCategory = event.target.value;
         createItems();
