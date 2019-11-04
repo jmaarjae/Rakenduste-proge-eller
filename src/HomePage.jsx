@@ -9,7 +9,7 @@ class HomePage extends React.PureComponent {
     this.state = {
       items: [],
       // kui null, ei joonista pilte
-      selectedCategory: "Digital Pianos",
+      selectedCategory: "Digital Pianos"
     };
   }
 
@@ -35,16 +35,18 @@ class HomePage extends React.PureComponent {
       });
   };
 
-  handleDropdown(event){
+  handleDropdown(event) {
     console.log(event.target.value);
     this.setState({
       selectedCategory: event.target.value
     });
   }
 
-getVisibleItems = () => {
-  return this.state.items.filter( item => item.category === this.state.selectedCategory);
-};
+  getVisibleItems = () => {
+    return this.state.items.filter(
+      item => item.category === this.state.selectedCategory
+    );
+  };
 
   render() {
     console.log("this.state", this.state);
