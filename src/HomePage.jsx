@@ -63,8 +63,8 @@ class HomePage extends React.PureComponent {
 
   getVisibleItems = () => {
     return this.state.items
-    .filter(item => this.isSelected(item.category))
-    .sort((a, b) => {
+      .filter(item => this.isSelected(item.category))
+      .sort((a, b) => {
         switch (this.state.sortDirection) {
           case -1:
             return b.price - a.price;
@@ -74,12 +74,11 @@ class HomePage extends React.PureComponent {
       });
   };
   //Kontrollib kategooria olemasolu
-  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
+  isSelected = name => this.state.selectedCategories.indexOf(name) >= 0;
 
-  handleSortDropdown = (event) => {
-    console.log("sort", event.target.value);
+  handleSortDropdown = sortDirection => {
     this.setState({
-      sortDirection: parseInt(event.target.value)
+      sortDirection: sortDirection //sama nimetaja puhul ei pea koolonijärgset olema
     });
   };
 
@@ -111,7 +110,6 @@ const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
       {allCategories.map(categoryName => {
         return (
           <Checkbox
-
             onChange={handleDropdown}
             key={categoryName}
             name={categoryName}
