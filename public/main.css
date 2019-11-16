@@ -11,10 +11,11 @@ body {
 .item:hover {
   transition: 0.6s all;
   cursor: pointer;
-  box-shadow: 0px 2px 6px 0px rgba(90, 69, 1, 0.5);
+  box-shadow: 2px 5px 7px 2px rgba(247, 195, 25, 0.5);
+  /* box-shadow: 0px 2px 6px 0px rgba(90, 69, 1, 0.5); */
 }
 .item {
-  box-shadow: 0px 2px 6px 0px rgba(247, 195, 25, 0.5);
+  box-shadow: 0px 2px 4px 0px rgba(90, 69, 1, 0.5);;
   border-radius: 5px;
   padding: 5px;
   width: 300px;
@@ -23,7 +24,7 @@ body {
 }
 .item img{
   width: 300px;
-  
+  height: 300px;
 }
 .itemTitle {
   color: darkred;

@@ -4,7 +4,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1QaDBc56guuRjy0Fmq6y0DXXap/Digital-Piano-88keys-Hammer-Action-China.jpg_220x220.jpg_.webp",
     title:
       "Piano-Paint Electric-Piano Beginner Upright 88-Keys Professional Intelligent Automatic",
-    price: "US $3,108",
+    price: "US $3108",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -12,7 +12,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1.37yXaL7gK0jSZFBq6xZZpXaa/high-quality-piano-digital-88-keys-with.jpg_220x220.jpg_.webp",
     title:
       "Desk Piano Simple Walnut 88-Key Electric Piano Home Desktop Hammer Piano",
-    price: "US $2,828",
+    price: "US $2828",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -20,7 +20,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1_Av8X4D1gK0jSZFyq6AiOVXaD/OEM-88-key-digital-piano-black-piano.jpg_220x220.jpg_.webp",
     title:
       "Wood Grain Electric Piano 88 Key Hammer Keyboard Adult Children Teaching",
-    price: "US $1,688",
+    price: "US $1688",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -28,7 +28,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/H3f2045cb9d1c4847aec19e853549fa82o/Home-digital-electric-piano-piano-keyboards-for.jpg_220x220.jpg_.webp",
     title:
       "Upright Piano Heavy-Hammer Adult Children 88 88-Key Teaching Intelligence Family",
-    price: "US $1,688",
+    price: "US $1772",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -36,7 +36,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1GqodX4D1gK0jSZFKq6AJrVXa9/88-key-electric-piano-digital-piano-weighted.jpg_220x220.jpg_.webp",
     title:
       "Digital Piano Test-Beginners 88-Keys Adult Children Home Teaching Intelligent",
-    price: "US $1,688",
+    price: "US $1660",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -44,7 +44,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1r8jNXhz1gK0jSZSgq6yvwpXai/digital-piano-88-key-hammer-action.jpg_220x220.jpg_.webp",
     title:
       "Electric-Piano 88-Key-Hammer Professional Intelligent Performance-Entry Triangle",
-    price: "US $1,688",
+    price: "US $1620",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -52,14 +52,14 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB18GK2zwKTBuNkSne1q6yJoXXaH/New-arrival-metal-pedal-music-white-piano.jpg_220x220.jpg_.webp",
     title:
       "Electric Piano 88-Key Hammer Black White Wood Grain Multi-Function Smart Piano",
-    price: "US $1,688",
+    price: "US $1699",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
     imgSrc:
       "https://s.alicdn.com/@sc01/kf/HTB19LqJKf9TBuNjy1zbq6xpepXap/2015-White-color-wooden-toy-piano-for.jpg_220x220.jpg_.webp",
     title: "Upright Digital Electronic Piano 88 Key Home Education",
-    price: "US $1,338",
+    price: "US $1338",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -67,7 +67,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/HTB1pcdhKFXXXXbLXpXXq6xXFXXXH/Hot-selling-musical-instrument-perfect-white-grand.jpg_220x220.jpg_.webp",
     title:
       "Music-Instruments Upright Piano 88-Key Black White Educational Smart The-One",
-    price: "US $1,299",
+    price: "US $1299",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -75,7 +75,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/U9398593a54d44825bca33b791b724e109/Brand-New-DP-603-CB-Digital-Piano.jpg_220x220.jpg_.webp",
     title:
       "Digital Piano Beginner Heavy-Hammer Adult Student 88 88-Key Teaching Grading",
-    price: "US $1,028",
+    price: "US $1028",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -107,7 +107,7 @@ const digitalPianos = [
       "https://s.alicdn.com/@sc01/kf/U64653606fcbb4a809dd28a55e7279644b/Wholesale-Clavinova-CLP-695GP-CLP-695GP-CVP.jpg_220x220.jpg_.webp",
     title:
       "Electronic-Control Musical-Instrument Grand-Piano Midi Keyboard 88-Key Professional Digital",
-    price: "US $318.50 - 344.50",
+    price: "US $318.50",
     category: "Buy digital piano and get free shipping on AliExpress.com"
   },
   {
@@ -188,7 +188,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/Hcc352bd9dfd74032b93c27bfe160cd69t/Wooden-Ukulele-21-Inch-Soprano-Hawaiian-Guitar.jpg_220x220.jpg_.webp",
     title:
       "Professional Acoustic guitar 40 41 inch Hot musica…strings Spruce top Solid Wood guitarras china OEM",
-    price: "US $255.60 - 291.10",
+    price: "US $255.60",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -196,7 +196,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/HTB1SaDGdTZmx1VjSZFGq6yx2XXak/Aiersi-brand-OEM-High-Quality-Ebony-black.jpg_220x220.jpg_.webp",
     title:
       "38 Acoustic Folk 6-String Guitar for Beginners St…uitar gitar guitar accessories guitar accessories",
-    price: "US $34.96 - 45",
+    price: "US $34.96",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -204,7 +204,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/H14b0d2dedeb14bf4a1639d7894f0da07o/Wholesa-Top-Solid-Koa-Acacia-Handmade-21.jpg_220x220.jpg_.webp",
     title:
       "Aklot Electric Ukulele Solid Mahogany w/ Online Vi…Tenor Uke 4 String Guitar with Strap String Tuner",
-    price: "US $47.87 - 68.39",
+    price: "US $47.87",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -220,7 +220,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/HTB1BF6Rc25G3KVjSZPxq6zI3XXak/Aiersi-Brand-diy-unfinished-practice-ukulele-kits.jpg_220x220.jpg_.webp",
     title:
       "Travel Guitar Beginners Carbon-Fiber Lava Me 36-In…High-Quality Ballad 2 Popular Student-Instruments",
-    price: "US $543.36 - 639.36",
+    price: "US $543.36",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -228,7 +228,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/Ub63bb9abe33d49aa8111fcc6e0a509c9X/High-Performance-YamahaGC82C-GC82S-classical-guitar-natural.jpg_220x220.jpg_.webp",
     title:
       "Case Guitar Folk Gift Carbon-Fiber Lava Me 36inch Big-Sale Electric-Box/freeboost 2",
-    price: "US $597.55 - 692.55",
+    price: "US $597.55",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -236,7 +236,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/UTB8S1yssMQydeJk43PUq6AyQpXaG/HELICON-Acoustic-Guitar-AGD-4156-41inch-.jpg_220x220.jpg_.webp",
     title:
       "Travel Guitar Student-Instruments Carbon-Fiber Lava Me 36-Inch High-Quality Ballad 2",
-    price: "US $946.76 - 1,395",
+    price: "US $946.76",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -284,7 +284,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/UTB8pXaWr._4iuJk43Fqq6z.FpXae/HELICON-TBBABY-Acoustic-Guitar.jpg_220x220.jpg_.webp",
     title:
       "Aiersi Classical Guitar Professional Double-Top Yulong Guo Chamber Koa Model-Gc-04ac",
-    price: "US $3,299",
+    price: "US $3299",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -324,7 +324,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/H1b744790ab29419f9255186cfbd8a043Q/Cheap-china-acoustic-electric-guitars.jpg_220x220.jpg_.webp",
     title:
       "Mahogany Guitar Pickup Enya Musical-Instruments Solid 40inch with Engelman Spruce",
-    price: "US $580 - 640.80",
+    price: "US $580",
     category: "Buy guitar and get free shipping on AliExpress.com"
   },
   {
@@ -340,15 +340,7 @@ const guitars = [
       "https://s.alicdn.com/@sc01/kf/HTB1rDpGcQ5E3KVjSZFCq6zuzXXa4/Kaspar-Chinese-Guitar-Factory-OEM-Cheap-Classical.jpg_220x220.jpg_.webp",
     title:
       "Forestwind guitar Double Neck 1275 model Electric guitar 6 string+12 string Combo",
-    price: "US $1,000 - 1,300",
-    category: "Buy guitar and get free shipping on AliExpress.com"
-  },
-  {
-    imgSrc:
-      "https://s.alicdn.com/@sc01/kf/Hb226aaf7cea64b7883986404eecfa22bL/High-Quality-guitar-41inch-acoustic-electric-guitar.jpg_220x220.jpg_.webp",
-    title:
-      "Suneye Guitar Black Handed Electrica Dean-Style Rosewood Fretboard Glossy-Finish Left",
-    price: "US $398.70",
+    price: "US $1000",
     category: "Buy guitar and get free shipping on AliExpress.com"
   }
 ];
@@ -359,14 +351,16 @@ const getItems = () => {
     items.push({
       ...digitalPiano,
       id: "digital-piano-" + index,
-      category: "Digital Pianos"
+      category: "Digital Pianos",
+      price: cleanPrice(digitalPiano.price),
     });
   });
   guitars.forEach((guitar, index) => {
     items.push({
       ...guitar,
       id: "guitar-" + index,
-      category: "Guitars"
+      category: "Guitars",
+      price: cleanPrice(guitar.price),
     });
   });
   return items;
@@ -374,6 +368,12 @@ const getItems = () => {
 
 const getItem = (itemId) =>{
     return getItems().find( item => item.id === itemId)
+};
+
+const cleanPrice = (dirty) => {
+  // replace dollar sign
+  const parts = dirty.split();
+  return parts [0].replace("US $","");
 };
 
 module.exports = {

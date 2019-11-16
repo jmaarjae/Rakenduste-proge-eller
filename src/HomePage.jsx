@@ -4,12 +4,14 @@ import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
+import SortDropdown from "./SortDropdown.jsx";
 //import { digitalPianos, guitars } from "./mydatabase.js";
 
 class HomePage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      sortDirection: -1,
       items: [],
       allCategories: ["Digital Pianos", "Guitars"],
       selectedCategories: ["Digital Pianos"]
@@ -60,21 +62,43 @@ class HomePage extends React.PureComponent {
   };
 
   getVisibleItems = () => {
-    return this.state.items.filter(item => this.isSelected(item.category));
+    return this.state.items
+    .filter(item => this.isSelected(item.category))
+    .sort((a, b) => {
+        switch (this.state.sortDirection) {
+          case -1:
+            return b.price - a.price;
+          case 1:
+            return a.price - b.price;
+        }
+      });
   };
   //Kontrollib kategooria olemasolu
-  isSelected = name => this.state.selectedCategories.indexOf(name) >= 0;
+  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
+
+  handleSortDropdown = (event) => {
+    console.log("sort", event.target.value);
+    this.setState({
+      sortDirection: parseInt(event.target.value)
+    });
+  };
 
   render() {
     console.log("this.state", this.state);
     return (
       <>
         <Header />
-        <ItemFilters 
+        <ItemFilters
           allCategories={this.state.allCategories}
           handleDropdown={this.handleDropdown}
           isSelected={this.isSelected}
         />
+        <div className={"itemsSettings"}>
+          <SortDropdown
+            direction={this.state.sortDirection}
+            onChange={this.handleSortDropdown}
+          />
+        </div>
         <ItemList items={this.getVisibleItems()} />
       </>
     );
@@ -87,9 +111,10 @@ const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
       {allCategories.map(categoryName => {
         return (
           <Checkbox
+
+            onChange={handleDropdown}
             key={categoryName}
             name={categoryName}
-            onChange={handleDropdown}
             checked={isSelected(categoryName)}
           />
         );
@@ -101,7 +126,7 @@ const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
 ItemFilters.propTypes = {
   allCategories: PropTypes.array.isRequired,
   handleDropdown: PropTypes.func.isRequired,
-  isSelected: PropTypes.func.isRequired,
+  isSelected: PropTypes.func.isRequired
 };
 
 export default HomePage;

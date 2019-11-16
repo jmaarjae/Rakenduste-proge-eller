@@ -342,13 +342,5 @@ export const guitars = [
         "Forestwind guitar Double Neck 1275 model Electric guitar 6 string+12 string Combo",
       price: "US $1,000 - 1,300",
       category: "Buy guitar and get free shipping on AliExpress.com"
-    },
-    {
-      imgSrc:
-        "https://s.alicdn.com/@sc01/kf/Hb226aaf7cea64b7883986404eecfa22bL/High-Quality-guitar-41inch-acoustic-electric-guitar.jpg_220x220.jpg_.webp",
-      title:
-        "Suneye Guitar Black Handed Electrica Dean-Style Rosewood Fretboard Glossy-Finish Left",
-      price: "US $398.70",
-      category: "Buy guitar and get free shipping on AliExpress.com"
     }
   ];

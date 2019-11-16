@@ -18,9 +18,11 @@ const Header = () => {
             Signup
           </div>
         </div>
-        <div className="headerButton"></div>
-        <img src={cartIcon} />
-        <div className={"headerButton-text"}>Cart</div>
+
+        <div className="headerButton">
+          <img src={cartIcon} />
+          <div className={"headerButton-text"}>Cart</div>
+        </div>
       </div>
     </div>
   );
