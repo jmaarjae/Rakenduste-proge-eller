@@ -83,6 +83,7 @@ class HomePage extends React.PureComponent {
   };
 
   render() {
+    const items = this.getVisibleItems();
     console.log("this.state", this.state);
     return (
       <>
@@ -93,6 +94,9 @@ class HomePage extends React.PureComponent {
           isSelected={this.isSelected}
         />
         <div className={"itemsSettings"}>
+          <div>
+            Items found {items.length} {this.state.selectedCategories.join(", ")}
+          </div>
           <SortDropdown
             direction={this.state.sortDirection}
             onChange={this.handleSortDropdown}

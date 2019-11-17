@@ -1,6 +1,7 @@
   
   /** Custom Select **/
   .custom-select-wrapper {
+    left: 1.5%;
     position: relative;
     display: inline-block;
     user-select: none;
@@ -15,13 +16,13 @@
       .custom-select-trigger {
         position: relative;
         display: block;
-        width: 130px;
-        padding: 0 84px 0 22px;
-        font-size: 22px;
+        width: 120px;
+        padding: 0 64px 0 18px;
+        font-size: 14px;
         font-weight: 300;
-        color: #fff;
-        line-height: 60px;
-        background: #5c9cd8;
+        color: rgb(0, 0, 0);
+        line-height: 45px;
+        background: rgb(245, 201, 6);
         border-radius: 4px;
         cursor: pointer;
       }
@@ -47,11 +48,11 @@
       display: block;
       top: 100%; left: 0; right: 0;
       min-width: 100%;
-      margin: 15px 0;
-      border: 1px solid #b5b5b5;
+      margin: 10px 0;
+      border: 1px solid #ffe15a;
       border-radius: 4px;
       box-sizing: border-box;
-      box-shadow: 0 2px 1px rgba(0,0,0,.07);
+      box-shadow: 0 2px 5px #fce998;
       background: #fff;
       transition: all .4s ease-in-out;
       
@@ -73,23 +74,21 @@
         bottom: 100%; right: 25px;
         width: 7px; height: 7px;
         margin-bottom: -4px;
-        border-top: 1px solid #b5b5b5;
-        border-left: 1px solid #b5b5b5;
-        background: #fff;
+        background: #fbe796;
         transform: rotate(45deg);
         transition: all .4s ease-in-out;
       }
       .option-hover:before {
-        background: #f9f9f9;
+        background: #fbe796;
       }
       .custom-option {
         position: relative;
         display: block;
         padding: 0 22px;
-        border-bottom: 1px solid #b5b5b5;
-        font-size: 18px;
-        font-weight: 600;
-        color: #b5b5b5;
+        border-bottom: 1px solid #fce998;
+        font-size: 13.5px;
+        font-weight: 300;
+        color: black;
         line-height: 47px;
         cursor: pointer;
         transition: all .4s ease-in-out;
@@ -103,5 +102,5 @@
       }
       .custom-option:hover,
       .custom-option.selection {
-        background: #f9f9f9;
+        background: #ffecae;
       }
