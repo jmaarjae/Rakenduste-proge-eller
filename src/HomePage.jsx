@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header.jsx";
-import ItemList from "./ItemList.jsx";
+import ItemsList from "./ItemsList.jsx";
 import Checkbox from "./Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
@@ -84,25 +84,29 @@ class HomePage extends React.PureComponent {
 
   render() {
     const items = this.getVisibleItems();
-    console.log("this.state", this.state);
     return (
       <>
         <Header />
-        <ItemFilters
-          allCategories={this.state.allCategories}
-          handleDropdown={this.handleDropdown}
-          isSelected={this.isSelected}
-        />
-        <div className={"itemsSettings"}>
-          <div>
-            Items found {items.length} {this.state.selectedCategories.join(", ")}
+        <div className={"bodyWrapper"}>
+          <div className={"filtersWrapper"}>
+            <ItemFilters
+              allCategories={this.state.allCategories}
+              handleDropdown={this.handleDropdown}
+              isSelected={this.isSelected}
+            />
+          </div>
+          <div className={"itemsHeaderWrapper"}>
+            <div>
+            Items found {items.length}{" "}
+            {this.state.selectedCategories.join(", ")}
           </div>
           <SortDropdown
             direction={this.state.sortDirection}
             onChange={this.handleSortDropdown}
           />
         </div>
-        <ItemList items={this.getVisibleItems()} />
+        <ItemsList items={items} />
+        </div>
       </>
     );
   }
@@ -110,7 +114,7 @@ class HomePage extends React.PureComponent {
 
 const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
   return (
-    <div className={"itemFiltersWrapper"}>
+    <div>
       {allCategories.map(categoryName => {
         return (
           <Checkbox

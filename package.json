@@ -12,7 +12,10 @@
     "lint": "eslint --version"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
     "npm-git-install": "^0.3.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
