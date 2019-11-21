@@ -17,6 +17,7 @@
   width: 150px;
   display: flex;
   justify-content: space-between;
+  margin-right: 25px;
 }
 
 .headerButton:hover{

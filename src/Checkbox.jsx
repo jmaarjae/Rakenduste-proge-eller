@@ -6,7 +6,13 @@ import "./checkbox.css"; //https://codepen.io/mburnette/pen/LxNxNg/
 const Checkbox = ({ name, onChange, checked }) => (
   <div>
     <div className="togglerName">{name}</div>
-    <input id={name} name ={name} type="checkbox" onChange={onChange} checked={checked}/>
+    <input
+      id={name}
+      name={name}
+      type="checkbox"
+      onChange={onChange}
+      checked={checked}
+    />
     <label htmlFor={name}></label>
   </div>
 );

@@ -74,9 +74,10 @@ class HomePage extends React.PureComponent {
       });
   };
   //Kontrollib kategooria olemasolu
-  isSelected = name => this.state.selectedCategories.indexOf(name) >= 0;
+  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
 
-  handleSortDropdown = sortDirection => {
+  handleSortDropdown = (sortDirection) => {
+    
     this.setState({
       sortDirection: sortDirection //sama nimetaja puhul ei pea koolonijärgset olema
     });
@@ -97,15 +98,15 @@ class HomePage extends React.PureComponent {
           </div>
           <div className={"itemsHeaderWrapper"}>
             <div>
-            Items found {items.length}{" "}
-            {this.state.selectedCategories.join(", ")}
+              Items found {items.length}{" "}
+              {this.state.selectedCategories.join(", ")}
+            </div>
+            <SortDropdown
+              direction={this.state.sortDirection}
+              onChange={this.handleSortDropdown}
+            />
           </div>
-          <SortDropdown
-            direction={this.state.sortDirection}
-            onChange={this.handleSortDropdown}
-          />
-        </div>
-        <ItemsList items={items} />
+          <ItemsList items={items} />
         </div>
       </>
     );
