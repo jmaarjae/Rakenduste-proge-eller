@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const DB = require("./database");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const userRouter = require("./user.js");
+const userRouter = require("./item.js");
 
 const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-r8uc0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
