@@ -371,7 +371,7 @@ const getItem = (itemId) =>{
 };
 
 const cleanPrice = (dirty) => {
-  // replace dollar sign
+  // replace
   const parts = dirty.split();
   return parts [0].replace("US $","");
 };
