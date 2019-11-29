@@ -22,7 +22,7 @@ class HomePage extends React.PureComponent {
   }
 
   fetchItems = () => {
-    fetch("/api/items")
+    fetch("/api/v1/items")
       .then(res => {
         console.log("res", res);
         //json tagastab Promise'i
@@ -73,10 +73,9 @@ class HomePage extends React.PureComponent {
       });
   };
   //Kontrollib kategooria olemasolu
-  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
+  isSelected = name => this.state.selectedCategories.indexOf(name) >= 0;
 
-  handleSortDropdown = (sortDirection) => {
-    
+  handleSortDropdown = sortDirection => {
     this.setState({
       sortDirection: sortDirection //sama nimetaja puhul ei pea koolonijärgset olema
     });
