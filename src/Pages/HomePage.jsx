@@ -94,7 +94,7 @@ class HomePage extends React.PureComponent {
           <div className={"filtersWrapper"}>
             <ItemFilters
               allCategories={this.state.allCategories}
-              handleDropdown={this.handleDropdown}
+              handleFilterSelect={this.handleFilterSelect}
               isSelected={this.isSelected}
             />
           </div>
@@ -115,13 +115,13 @@ class HomePage extends React.PureComponent {
   }
 }
 
-const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
+const ItemFilters = ({ allCategories, handleFilterSelect, isSelected }) => {
   return (
     <div>
       {allCategories.map(categoryName => {
         return (
           <Checkbox
-            onChange={handleDropdown}
+            onChange={handleFilterSelect}
             key={categoryName}
             name={categoryName}
             checked={isSelected(categoryName)}
@@ -134,7 +134,7 @@ const ItemFilters = ({ allCategories, handleDropdown, isSelected }) => {
 
 ItemFilters.propTypes = {
   allCategories: PropTypes.array.isRequired,
-  handleDropdown: PropTypes.func.isRequired,
+  handleFilterSelect: PropTypes.func.isRequired,
   isSelected: PropTypes.func.isRequired
 };
 

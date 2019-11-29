@@ -34,20 +34,9 @@ class App extends React.Component {
     return (
       //andmete edastus
       <AuthContext.Provider value={this.state}>
-         <BrowserRouter>
-          <Route
-            path={"/"} component={Header} />
+        <BrowserRouter>
+          <Route path={"/"} component={Header} />
           <Switch>
-            <Route
-              path={"/"}
-              render={props => (
-                <Header
-                  {...props}
-                  token={this.state.token}
-                  user={this.state.user}
-                />
-              )}
-            />
             <Route path="/" exact component={HomePage} />
             <Route
               path="/login"
@@ -57,13 +46,7 @@ class App extends React.Component {
               )}
             />
             <Route path="/signup" exact component={SignupPage} />
-            <Route
-              path="/users/:userId"
-              exact
-              render={props => {
-                return <UserPage {...props} user={this.state.user} />;
-              }}
-            />
+            <Route path="/users/:userId" exact component={UserPage} />
             <Route path="/items/:itemId" exact component={ItemPage} />
             <Route component={NotFound} />
           </Switch>
