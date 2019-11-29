@@ -30,11 +30,12 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.css$/i,
         use: ["style-loader", "css-loader"]
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
