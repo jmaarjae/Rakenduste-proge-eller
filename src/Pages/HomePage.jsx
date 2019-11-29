@@ -39,25 +39,30 @@ class HomePage extends React.PureComponent {
       });
   };
 
-  handleDropdown = event => {
+  handleFilterSelect = event => {
+    const categoryName = event.target.name;
     console.log(event.target.value, event.target.name);
-    if (this.isSelected(event.target.name)) {
-      //slice'iga kopeerib uue listina
-      const clone = this.state.selectedCategories.slice();
-      const index = this.state.selectedCategories.indexOf([event.target.name]);
-      //muudab olemasolevat listi
-      clone.splice(index, 1);
-      this.setState({
-        selectedCategories: clone
-      });
-    } else {
-      this.setState({
-        //tagastab uue listi
-        selectedCategories: this.state.selectedCategories.concat([
-          event.target.name
-        ])
-      });
+    if (this.isSelected(categoryName)) {
+      return this.unselectCategory(categoryName);
     }
+    this.selectCategory(categoryName);
+  };
+
+  selectCategory = categoryName => {
+    this.setState({
+      selectedCategories: this.state.selectedCategories.concat([categoryName])
+    });
+  };
+
+  //fiter loob uue listi(mitte ei muuda olemasolevat)
+  unselectCategory = categoryName => {
+    const newArr = this.state.selectedCategories.filter(
+      cn => cn !== categoryName
+    );
+
+    this.setState({
+      selectedCategories: newArr
+    });
   };
 
   getVisibleItems = () => {
