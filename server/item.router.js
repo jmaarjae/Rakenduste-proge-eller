@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const DB = require("./database.js");
 const mongoose = require("mongoose");
+const Item = require("./item.model.js");
 
-const itemSchema = new mongoose.Schema({
-  imgSrc: { type: String, required: true },
-  title: { type: String, required: true },
-  price: { type: Number, required: true },
-  category: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
+// Deletes an item from DB using item ID
+router.delete("/api/items/:itemId", (req, res) => {
+  Item.deleteOne({ _id: mongoose.Types.ObjectId(req.params.itemId) }, err => {
+    if (err) {
+      console.log("error:", err);
+      return res.send(500);
+    }
+    console.log("save success");
+    return res.send(204);
+  });
 });
-
-const Item = mongoose.model("Item", itemSchema);
 
 // creates a new item
 router.post("/api/items", (req, res) => {
@@ -33,10 +35,6 @@ router.post("/api/items", (req, res) => {
   });
 });
 
-//201-created:The request has been fulfilled and has 
-//resulted in one or more new resources being created.
-
-//500-internal server error
 //Returns all items from DB
 router.get("/api/items", (req, res) => {
   Item.find({}, function(err, items) {
@@ -50,7 +48,6 @@ router.get("/api/items", (req, res) => {
 });
 
 //Returns an item from DB, finds using Id
-
 router.get("/api/items/:itemId", (req, res) => {
   Item.findById(req.params.itemId, function(err, item) {
     if (err) {
@@ -63,3 +60,8 @@ router.get("/api/items/:itemId", (req, res) => {
 });
 
 module.exports = router;
+
+//In arrow fn-s remember RETURN!
+//201-created:The request has been fulfilled and has resulted in one or more new resources being created.
+//500-internal server error
+//204-no content(in this case: success)

@@ -350,7 +350,7 @@ const getItems = () => {
   digitalPianos.forEach((digitalPiano, index) => {
     items.push({
       ...digitalPiano,
-      id: "digital-piano-" + index,
+      //id: "digital-piano-" + index,
       category: "Digital Pianos",
       price: cleanPrice(digitalPiano.price),
     });
@@ -358,7 +358,7 @@ const getItems = () => {
   guitars.forEach((guitar, index) => {
     items.push({
       ...guitar,
-      id: "guitar-" + index,
+      //id: "guitar-" + index,
       category: "Guitars",
       price: cleanPrice(guitar.price),
     });
