@@ -18,7 +18,6 @@ class ItemPage extends React.PureComponent {
         return res.json();
       })
       .then( item => {
-        console.log("item", item);
         this.setState( {
           ...item
         });
@@ -29,16 +28,15 @@ class ItemPage extends React.PureComponent {
   };
 
   render() {
-    console.log("this.props", this.props);
-    console.log("itemID", this.props.match.params.itemId);
-
-    console.log("this.state", this.state);
+    // console.log("this.props", this.props);
+    // console.log("itemID", this.props.match.params.itemId);
+    // console.log("this.state", this.state);
     return (
       <>
         <div className={"itemContainer"}>
           <img src={this.state.imgSrc} />
           <div className={"itemTitle"}>{this.state.title}</div>
-          <div className={"itemCost"}>{this.state.price}</div>
+          <div className={"itemCost"}>${this.state.price}</div>
         </div>
       </>
     );

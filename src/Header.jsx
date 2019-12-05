@@ -14,19 +14,17 @@ const Header = ({ user }) => {
         {user.email && <WelcomeIcon user={user} />}
         {!user.email && <LoginRegistrationIcon />}
 
-        <div className="headerButton">
-          <img src={userIcon} />
-          <div className={"headerButton-text"}>
-            Login/
-            <br />
-            Signup
-          </div>
-        </div>
-
-        <div className="headerButton">
-          <img src={cartIcon} />
-          <div className={"headerButton-text"}>Cart</div>
-        </div>
+        <Link className="headerButton" to={"/checkout/cart"}>
+          <button className="instagram" type="submit">
+            <img
+              className={"buttonImage"}
+              src={cartIcon}
+              alt=""
+              style={{ height: 35 }}
+            />
+            Cart
+          </button>
+        </Link>
       </div>
     </div>
   );

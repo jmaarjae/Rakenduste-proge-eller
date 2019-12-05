@@ -9,12 +9,13 @@ const userRouter = require("./user.router.js");
 const authRouter = require("./auth.router.js");
 const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-r8uc0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
 
 /** Development environment. In Heroku we don't use .env file */
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-r8uc0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.use(bodyParser.json());
 app.use("/api/v1/auth", authRouter);

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../Components/SortDropdown.jsx";
 //import { digitalPianos, guitars } from "./mydatabase.js";
+import {getItems} from "../actions/ItemsActions"  ;
 
 class HomePage extends React.PureComponent {
   constructor(props) {
@@ -22,12 +23,12 @@ class HomePage extends React.PureComponent {
   }
 
   fetchItems = () => {
-    fetch("/api/v1/items")
-      .then(res => {
-        console.log("res", res);
-        //json tagastab Promise'i
-        return res.json();
-      })
+    getItems()
+      // .then(res => {
+      //   console.log("Homepage fetch items", res);
+      //   //json tagastab Promise'i
+      //   return res.json();
+      // })
       .then(items => {
         console.log("items", items);
         this.setState({

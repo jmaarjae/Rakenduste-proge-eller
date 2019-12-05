@@ -19,10 +19,10 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="headerButton">
+        <Link to={"/checkout/cart"} className="headerButton">
           <img src={cartIcon} />
           <div className={"headerButton-text"}>Cart</div>
-        </div>
+        </Link>
       </div>
     </div>
   );

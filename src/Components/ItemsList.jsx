@@ -27,6 +27,7 @@ ItemsList.propTypes = {
 
 const Item = props => {
   return (
+    console.log("itemList"),
     <Link to={`/items/${props.id}`} className={"item"}>
       <div className={"item_imgWrapper"}>
         <img src={props.imgSrc} />
