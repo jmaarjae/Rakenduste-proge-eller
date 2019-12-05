@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import authConsumer from "../components/authConsumer.jsx";
+import authConsumer from "../Components/authConsumer.jsx";
 import protectedRedirect from "../Components/protectedRedirect.jsx";
 
 class UserPage extends React.PureComponent {
