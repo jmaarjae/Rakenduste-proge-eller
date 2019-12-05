@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../Components/SortDropdown.jsx";
 //import { digitalPianos, guitars } from "./mydatabase.js";
-import {getItems} from "../actions/ItemsActions"  ;
+import {getItems} from "../actions/itemsActions"  ;
 
 class HomePage extends React.PureComponent {
   constructor(props) {
