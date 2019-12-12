@@ -25,6 +25,7 @@
         background: rgb(245, 201, 6);
         border-radius: 4px;
         cursor: pointer;
+        margin-right: 25px;
       }
         .custom-select-trigger:after {
           position: absolute;

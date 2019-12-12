@@ -2,6 +2,7 @@ import React from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
 class LoginPage extends React.PureComponent {
   static propTypes = {
     history: PropTypes.object.isRequired,

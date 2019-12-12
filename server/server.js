@@ -2,14 +2,13 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3000;
-const DB = require("./database.js");
+const database = require("./database.js");
 const mongoose = require("mongoose");
 const itemRouter = require("./item.router.js");
 const userRouter = require("./user.router.js");
 const authRouter = require("./auth.router.js");
 const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
-
 
 /** Development environment. In Heroku we don't use .env file */
 if (process.env.NODE_ENV !== "production") {
@@ -40,52 +39,11 @@ function listen() {
   });
 }
 
-mongoose
-  .connect(DB_URL)
+database
+  .connect()
   .then(() => {
-    console.log("DB Access successful!");
-    //deleteAllItems();
-    migrate();
     listen();
   })
   .catch(err => {
-    console.error("DB Access error: ", err);
+    console.log("error on database connect", err);
   });
-
-//Miinus: tegevused asünkroonsed-ei tea millal kõik tooted salvestatud
-function migrate() {
-  console.log("Checking item counts.");
-
-  Item.count({}, (err, countNr) => {
-    if (err) throw err;
-    if (countNr > 0) {
-      console.log("Items already exist, skipping");
-      return;
-    }
-    console.log("Items missing so creating them.");
-    saveAllItems();
-  });
-}
-
-function deleteAllItems() {
-  Item.deleteMany({}, (err, doc) => {
-    console.log("err", err, "doc", doc);
-  });
-}
-
-function saveAllItems() {
-  console.log("migrate started");
-  const items = DB.getItems();
-
-  items.forEach(item => {
-    const document = new Item(item);
-    document.save(err => {
-      if (err) {
-        console.log(err);
-        throw new Error("Something happened during save");
-      }
-      console.log("Succesfully saved");
-    });
-  });
-  console.log("items", items);
-}

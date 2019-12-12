@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { getItems } from "../actions/itemsActions.js";
-import { FaRegTrashAlt, FaAngleRight } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+import FancyButton from "../components/FancyButton.jsx";
 import "../Components/cart.css";
 class CartPage extends React.PureComponent {
   state = {
@@ -50,10 +51,9 @@ class CartPage extends React.PureComponent {
                 <tr>
                   <td></td>
                   <td>
-                    <div className={"submit-button"}>
+                    <FancyButton>
                       Vormista ost
-                      <FaAngleRight />
-                    </div>
+                    </FancyButton>
                   </td>
                 </tr>
               </tbody>
@@ -75,9 +75,9 @@ const Table = ({ rows }) => {
         {/* Trash button */}
         <div className={"cell cell--small"}></div>
       </div>
-      {rows.map((row) => 
+      {rows.map(row => (
         <Row key={row._id} {...row} />
-      )}
+      ))}
     </div>
   );
 };
@@ -111,4 +111,4 @@ export const ItemProps = {
 
 Row.propTypes = ItemProps;
 
-export default CartPage;  
+export default CartPage;

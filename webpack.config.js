@@ -30,12 +30,12 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
+        enforce: "pre",
         test: /\.css$/i,
         use: ["style-loader", "css-loader"]
       },
       {
-        enforce: 'pre',
+        enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
@@ -49,6 +49,17 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.(woff|woff2)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "static/fonts"
+            }
+          }
+        ]
       }
     ]
   }

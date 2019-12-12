@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthContext } from "../index.jsx";
+import { AuthContext } from "../App.jsx";
 
 //funktsioon, mis tagastab funktsiooni/komponendi
 const authConsumer = WrappedComponent => {

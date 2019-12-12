@@ -1,3 +1,64 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+const DB = require("./database.js");
+const mongoose = require("mongoose");
+const Item = require("./item.model.js");
+
+const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-r8uc0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
+const connect = () => {
+  return mongoose
+    .connect(DB_URL)
+    .then(() => {
+      console.log("DB Access successful!");
+      //deleteAllItems();
+      migrate();
+      return true;
+    })
+    .catch(err => {
+      console.error("DB Access error: ", err);
+    });
+};
+
+//Miinus: tegevused asünkroonsed-ei tea millal kõik tooted salvestatud
+function migrate() {
+  console.log("Checking item counts.");
+
+  Item.count({}, (err, countNr) => {
+    if (err) throw err;
+    if (countNr > 0) {
+      console.log("Items already exist, skipping");
+      return;
+    }
+    console.log("Items missing so creating them.");
+    saveAllItems();
+  });
+}
+
+function deleteAllItems() {
+  Item.deleteMany({}, (err, doc) => {
+    console.log("err", err, "doc", doc);
+  });
+}
+
+function saveAllItems() {
+  console.log("migrate started");
+  const items = DB.getItems();
+
+  items.forEach(item => {
+    const document = new Item(item);
+    document.save(err => {
+      if (err) {
+        console.log(err);
+        throw new Error("Something happened during save");
+      }
+      console.log("Succesfully saved");
+    });
+  });
+  console.log("items", items);
+}
+
 const digitalPianos = [
   {
     imgSrc:
@@ -352,7 +413,7 @@ const getItems = () => {
       ...digitalPiano,
       //id: "digital-piano-" + index,
       category: "Digital Pianos",
-      price: cleanPrice(digitalPiano.price),
+      price: cleanPrice(digitalPiano.price)
     });
   });
   guitars.forEach((guitar, index) => {
@@ -360,23 +421,24 @@ const getItems = () => {
       ...guitar,
       //id: "guitar-" + index,
       category: "Guitars",
-      price: cleanPrice(guitar.price),
+      price: cleanPrice(guitar.price)
     });
   });
   return items;
 };
 
-const getItem = (itemId) =>{
-    return getItems().find( item => item.id === itemId)
+const getItem = itemId => {
+  return getItems().find(item => item.id === itemId);
 };
 
-const cleanPrice = (dirty) => {
+const cleanPrice = dirty => {
   // replace
   const parts = dirty.split();
-  return parts [0].replace("US $","");
+  return parts[0].replace("US $", "");
 };
 
 module.exports = {
   getItems,
-  getItem
+  getItem,
+  connect
 };
