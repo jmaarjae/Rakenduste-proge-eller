@@ -2,7 +2,7 @@ import React from "react";
 //import { digitalPianos } from "./mydatabase.js";
 import PropTypes from "prop-types";
 import "./itempage.css";
-import FancyButton from "../components/FancyButton.jsx";
+import FancyButton from "../Components/FancyButton.jsx";
 import { connect } from "react-redux";
 import {addItem} from "../Store/store.js";
 

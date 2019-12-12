@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FaRegTrashAlt } from "react-icons/fa";
-import FancyButton from "../components/FancyButton.jsx";
+import FancyButton from "../Components/FancyButton.jsx";
 import "../Components/cart.css";
 import { removeItem } from "../Store/store";
 import { connect } from "react-redux";
