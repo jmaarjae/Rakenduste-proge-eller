@@ -65,7 +65,7 @@ class SignUpPage extends React.PureComponent {
             />
             <button>create</button>
             <p className="message">
-              Already registered? <Link to={"/login"}>Sign In</Link>
+              Already registered? <Link to={"/login"}>Log In</Link>
             </p>
           </form>
         </div>

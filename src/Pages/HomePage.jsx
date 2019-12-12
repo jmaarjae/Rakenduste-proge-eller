@@ -4,41 +4,29 @@ import Checkbox from "../Components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../Components/SortDropdown.jsx";
-//import { digitalPianos, guitars } from "./mydatabase.js";
-import {getItems} from "../actions/itemsActions"  ;
+import { connect } from "react-redux";
+import { getItems } from "../Store/store.js";
+import { ItemProps } from "./CartPage.jsx";
 
 class HomePage extends React.PureComponent {
+  //staatiline tuleb defineerida komponendi sees!
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       sortDirection: -1,
-      items: [],
       allCategories: ["Digital Pianos", "Guitars"],
       selectedCategories: ["Digital Pianos"]
     };
   }
 
   componentDidMount() {
-    this.fetchItems();
+    this.props.dispatch(getItems());
   }
-
-  fetchItems = () => {
-    getItems()
-      // .then(res => {
-      //   console.log("Homepage fetch items", res);
-      //   //json tagastab Promise'i
-      //   return res.json();
-      // })
-      .then(items => {
-        console.log("items", items);
-        this.setState({
-          items
-        });
-      })
-      .catch(err => {
-        console.log("err", err);
-      });
-  };
 
   handleFilterSelect = event => {
     const categoryName = event.target.name;
@@ -67,7 +55,7 @@ class HomePage extends React.PureComponent {
   };
 
   getVisibleItems = () => {
-    return this.state.items
+    return this.props.items
       .filter(item => this.isSelected(item.category))
       .sort((a, b) => {
         switch (this.state.sortDirection) {
@@ -139,4 +127,10 @@ ItemFilters.propTypes = {
   isSelected: PropTypes.func.isRequired
 };
 
-export default HomePage;
+const mapStateToProps = store => {
+  return {
+    items: store.items
+  };
+};
+
+export default connect(mapStateToProps)(HomePage);

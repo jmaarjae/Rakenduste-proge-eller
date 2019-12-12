@@ -1,28 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getItems } from "../actions/itemsActions.js";
 import { FaRegTrashAlt } from "react-icons/fa";
 import FancyButton from "../components/FancyButton.jsx";
 import "../Components/cart.css";
+import { removeItem } from "../Store/store";
+import { connect } from "react-redux";
+
 class CartPage extends React.PureComponent {
-  state = {
-    rows: []
+  static propTypes = {
+    cart: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
+    dispatch: PropTypes.func.isRequired
   };
 
-  componentDidMount() {
-    getItems()
-      .then(items => {
-        this.setState({
-          rows: items.slice(0, 4)
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        console.error("Somethings worng with fetcing items");
-      });
-  }
+  calcNumbers = () => {
+    const VAT = 20;
+    const sum = Math.round(
+      this.props.cart.reduce((acc, item) => acc + item.price, 0)
+    );
+    const tax = Math.round((sum / 100) * VAT);
+    return {
+      sum,
+      tax
+    };
+  };
+
+  handleTrash = _id => {
+    this.props.dispatch(removeItem(_id));
+  };
 
   render() {
+    const { sum, tax } = this.calcNumbers();
+
     return (
       <>
         <div>
@@ -31,27 +39,27 @@ class CartPage extends React.PureComponent {
 
         <div className={"spacer"}>
           <div className={"box cart"}>
-            <Table rows={this.state.rows} />
+            <Table onTrash={this.handleTrash} rows={this.props.cart} />
           </div>
           <div className={"box cart__summary"}>
             <table>
               <tbody>
                 <tr>
                   <td>Vahesumma</td>
-                  <td>22 000 €</td>
+                  <td>{sum} €</td>
                 </tr>
                 <tr>
                   <td>Maksud</td>
-                  <td>1100€</td>
+                  <td>{tax} €</td>
                 </tr>
                 <tr>
                   <td>Kokku</td>
-                  <td>23 100 €</td>
+                  <td>{tax + sum} €</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td>
-                    <FancyButton>
+                    <FancyButton onClick={() => console.log("Vormista ost!")}>
                       Vormista ost
                     </FancyButton>
                   </td>
@@ -64,7 +72,8 @@ class CartPage extends React.PureComponent {
     );
   }
 }
-const Table = ({ rows }) => {
+
+const Table = ({ rows, onTrash }) => {
   return (
     <div className={"table"}>
       <div className={"row"}>
@@ -72,21 +81,21 @@ const Table = ({ rows }) => {
         <div className={"cell cell-grow"}>Nimetus</div>
         <div className={"cell"}>Kategooria</div>
         <div className={"cell cell--right"}>Summa</div>
-        {/* Trash button */}
         <div className={"cell cell--small"}></div>
       </div>
-      {rows.map(row => (
-        <Row key={row._id} {...row} />
+      {rows.map((row, index) => (
+        <Row onTrash={onTrash} key={index} {...row} />
       ))}
     </div>
   );
 };
 
 Table.propTypes = {
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  onTrash: PropTypes.func.isRequired
 };
 
-const Row = ({ title, imgSrc, category, price }) => {
+const Row = ({ _id, title, imgSrc, category, price, onTrash }) => {
   return (
     <div className={"row"}>
       <div className={"cell"}>
@@ -95,12 +104,17 @@ const Row = ({ title, imgSrc, category, price }) => {
       <div className={"cell cell--grow"}>{title}</div>
       <div className={"cell"}>{category}</div>
       <div className={"cell cell-right"}>{price} €</div>
-      <div className={"cell cell--small cell--center"}>
-        <FaRegTrashAlt />
+      <div className={"cell cell--small cell--center hover--opacity"}>
+        <FaRegTrashAlt
+          title={"Eemalda"}
+          className={"trashButton"}
+          onClick={() => onTrash(_id)}
+        />
       </div>
     </div>
   );
 };
+
 export const ItemProps = {
   _id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
@@ -109,6 +123,15 @@ export const ItemProps = {
   price: PropTypes.number.isRequired
 };
 
-Row.propTypes = ItemProps;
+Row.propTypes = {
+  ...ItemProps,
+  onTrash: PropTypes.func.isRequired
+};
 
-export default CartPage;
+const mapStateToProps = store => {
+  return {
+    cart: store.cart
+  };
+};
+
+export default connect(mapStateToProps)(CartPage);

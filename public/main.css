@@ -40,8 +40,9 @@ body {
   height: 400px;
   margin-bottom: 25px;
 }
-.item img{
+.item img {
   width: 300px;
+  height: auto;
 }
 .itemTitle {
   color: darkred;
@@ -52,20 +53,20 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
-.content a{
-    text-decoration: none;
+.content a {
+  text-decoration: none;
 }
-.itemContainer{
+.itemContainer {
   box-shadow: 0px 2px 6px 0px rgba(90, 69, 1, 0.5);
   width: 100%;
   padding: 20px 25px;
   margin-left: 5%;
 }
-.itemContainer .itemPageImage{
+.itemContainer .itemPageImage {
   width: 200px;
   display: flex;
 }
 
-.categoryWrapper{
+.categoryWrapper {
   padding: 25px;
 }

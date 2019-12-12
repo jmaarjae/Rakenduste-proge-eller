@@ -1,38 +1,69 @@
 .spacer {
-    width: 90%;
-    margin: 0 auto;
-    border: 1px;
-    background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px;
+  background-color: white;
 }
 
-img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+.box {
+  border-radius: 5px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #3333332b;
 }
 
-.row {
-    display: grid;
-    grid-template-columns: repeat(4, 24%) 10%;
-}
-/* https://www.w3schools.com/cssref/sel_nth-child.asp */
-.row:nth-child(1) {
-    grid-row: 1/2;
-    font-weight: bold;
+.cart__summary {
+  width: 350px;
+  float: right;
+  margin-top: 10px;
 }
 
-.row:nth-child(2) {
-    grid-row: 2/3;
+.cart__summary table {
+  width: 100%;
 }
 
-.row:nth-child(3) {
-    grid-row: 3/4;
+.cart__summary table td {
+  padding: 5px 0px;
+}
+.cart__summary table tr td:last-child {
+  text-align: right;
 }
 
-.row:nth-child(4) {
-    grid-row: 4/5;
+.cart .cell {
+  flex-basis: 150px;
+  padding-left: 15px;
 }
 
-.row:nth-child(5) {
-    grid-row: 5/6;
+.cell--right {
+  text-align: right;
+}
+
+.cart .row:first-child {
+  border-bottom: 1px solid rgba(51, 51, 51, 0.37);
+  padding: 10px 0;
+}
+.cart .row {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+}
+.cart .cell:first-child {
+  padding-left: 0;
+}
+
+.cell--grow {
+  flex-grow: 1;
+}
+
+.cell--small {
+  flex-basis: 50px !important;
+}
+
+.cell--center {
+  display: flex;
+  justify-content: center;
+}
+
+.cart .row:last-child {
+  border-bottom: 0;
 }
