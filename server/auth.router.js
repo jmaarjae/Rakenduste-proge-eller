@@ -25,10 +25,9 @@ router.post("/verify", (req, res) => {
     });
 });
 
-//login
+
 router.post("/login", userController.login);
 
-//create new user (signup)
 router.post("/signup", 
     [
         check("email").isEmail().normalizeEmail(),
@@ -42,6 +41,5 @@ router.post("/signup",
     userController.signup
 );
 
-router.post("/signup", userController.signup);
 
 module.exports = router;
