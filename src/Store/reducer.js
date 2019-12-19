@@ -10,15 +10,13 @@ import PropTypes from "prop-types";
 export const UserPropTypes = {
   _id: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired
+  createdAt: PropTypes.string.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const initialState = {
   token: null,
   user: null,
-  cart: [
-    //item
-  ],
   items: []
 };
 
@@ -38,7 +36,7 @@ export const reducer = (state = initialState, action) => {
     case ITEM_ADDED: {
       return {
         ...state,
-        cart: state.cart.concat([action.payload])
+        user: addItemToCart(state.user, action.payload)
       };
     }
     case ITEMS_SUCCESS: {
@@ -50,7 +48,7 @@ export const reducer = (state = initialState, action) => {
     case ITEM_REMOVED: {
       return {
         ...state,
-        cart: removeItemById(state.cart, action.payload)
+        user: removeItemFromCart(state.user, action.payload)
       };
     }
     default: {
@@ -59,12 +57,20 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const removeItemById = (items, _id) => {
-  //findIndex!
-  const index = items.findIndex(item => item._id === _id);
-  if (index === -1) return items;
-  const copy = items.slice();
-  // splice muudab olemasolevat
-  copy.splice(index, 1);
-  return copy;
+const removeItemFromCart = (user, itemId) => {
+  const foundItemIndex = user.cart.findIndex(cartId => cartId === itemId);
+  if (foundItemIndex === -1) return user;
+  const cartCopy = user.cart.slice();
+  cartCopy.splice(foundItemIndex, 1);
+  return {
+    ...user,
+    cart: cartCopy
+  };
+};
+
+const addItemToCart = (user, itemId) => {
+  return {
+    ...user,
+    cart: user.cart.concat([itemId])
+  };
 };

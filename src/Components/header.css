@@ -14,10 +14,9 @@
   width: 50px;
 }
 .headerButtons {
-  width: 150px;
-  display: flex;
+  width: 16%;
   justify-content: space-between;
-  margin-right: 6%;
+  display:flex;
 }
 
 .headerButton:hover {
@@ -36,7 +35,6 @@
   transition: all 0.4s;
   cursor: pointer;
 }
-
 
 .headerButton-text {
   margin-left: 10px;

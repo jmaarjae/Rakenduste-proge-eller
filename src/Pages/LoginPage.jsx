@@ -4,7 +4,7 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { userUpdate } from "../Store/actions";
+import { tokenUpdate, userUpdate } from "../Store/actions";
 import { toast } from "react-toastify";
 
 class LoginPage extends React.PureComponent {
@@ -23,7 +23,8 @@ class LoginPage extends React.PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-    services.login(this.state) 
+    services
+      .login(this.state)
       .then(this.handleSuccess)
       .catch(err => {
         console.log("Error", err);
@@ -31,7 +32,8 @@ class LoginPage extends React.PureComponent {
       });
   };
 
-  handleSuccess = ({ user }) => {
+  handleSuccess = ({ token, user }) => {
+    this.props.dispatch(tokenUpdate(token));
     this.props.dispatch(userUpdate(user));
     this.props.history.push(`/users/${user._id}`);
   };

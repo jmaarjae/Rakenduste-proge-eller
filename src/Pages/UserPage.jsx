@@ -23,11 +23,11 @@ class UserPage extends React.PureComponent {
     return (
       <div className={"spacer"}>
         <div className={"box"}>
-          <div style={{display:"flex", justifyContent: "space-around"}}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div className={"field"}>{this.props.user.email}</div>
             <div className={"field"}>{this.props.user.createdAt}</div>
+            <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
           </div>
-          < FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
         </div>
       </div>
     );
