@@ -28,7 +28,10 @@ class SignUpPage extends React.PureComponent {
       },
       body: JSON.stringify(this.state)
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw "signup failed";
+        return res.json();
+      })
       .then(() => {
         this.props.history.push("/login");
         toast.error("Registration successful.");
@@ -49,7 +52,7 @@ class SignUpPage extends React.PureComponent {
   render() {
     return (
       <>
-      <h1 style={{ textAlign: "center" }}>Signup</h1>
+        <h1 style={{ textAlign: "center" }}>Signup</h1>
         <div className="form">
           <form className="register-form" onSubmit={this.handleSubmit}>
             <input
