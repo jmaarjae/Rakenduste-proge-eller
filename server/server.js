@@ -1,3 +1,8 @@
+
+/** Development environment. In Heroku we don't use .env file */
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -5,16 +10,16 @@ const bodyParser = require("body-parser");
 const database = require("./database.js");
 const apiRouter = require("./apiRouter.js");
 
-/** Development environment. In Heroku we don't use .env file */
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 app.use(bodyParser.json());
 app.use(apiRouter);
 
-app.use("/static", express.static("dist/static"));
-app.use("/*", express.static("dist"));
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
+
+app.get(`/items/*`, (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
 
 app.use(express.static("dist"));
 
