@@ -5,7 +5,7 @@ import Header from "./Components/Header.jsx";
 import "./Pages/main.css";
 import "typeface-roboto";
 import { Provider } from "react-redux";
-import configureStore from "./store/configureStore.js";
+import configureStore from "./Store/configureStore.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

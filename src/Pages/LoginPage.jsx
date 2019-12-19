@@ -3,7 +3,7 @@ import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { userUpdate } from "../store/actions";
+import { userUpdate } from "../Store/actions";
 import { toast } from "react-toastify";
 
 class LoginPage extends React.PureComponent {

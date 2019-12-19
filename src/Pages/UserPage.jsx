@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FancyButton from "../components/FancyButton.jsx";
+import FancyButton from "../Components/FancyButton.jsx";
 //import authConsumer from "../Components/authConsumer.jsx";
 import protectedRedirect from "../Components/protectedRedirect.jsx";
 import { userUpdate, tokenUpdate } from "../store/actions";
-import { UserPropTypes } from "../store/reducer.js";
+import { UserPropTypes } from "../Store/reducer.js";
 import { connect } from "react-redux";
 class UserPage extends React.PureComponent {
   static propTypes = {
