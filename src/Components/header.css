@@ -37,9 +37,6 @@
   cursor: pointer;
 }
 
-.headerButton:first-of-type {
-  margin-right: 60px;
-}
 
 .headerButton-text {
   margin-left: 5px;

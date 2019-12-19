@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "./homepage.css";
 import SortDropdown from "../Components/SortDropdown.jsx";
 import { connect } from "react-redux";
-import { getItems } from "../Store/store.js";
+import { getItems } from "../Store/actions.js";
 import { ItemProps } from "./CartPage.jsx";
 
 class HomePage extends React.PureComponent {
