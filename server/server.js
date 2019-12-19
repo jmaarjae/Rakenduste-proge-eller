@@ -4,17 +4,14 @@ if (process.env.NODE_ENV !== "production") {
 }
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 3000;
 const apiRouter = require("./apiRouter.js");
 const database = require("./database.js");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(apiRouter);
 
-/** For images and bundle.js */
 app.use("/static", express.static("dist/static"));
-
-/** For index.html */
 app.use("/*", express.static("dist"));
 app.use(express.static("dist"));
 
