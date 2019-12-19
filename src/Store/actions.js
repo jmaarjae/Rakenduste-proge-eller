@@ -1,21 +1,23 @@
+import * as services from "../services";
+import * as selectors from "../Store/selectors.js";
+
 export const ITEMS_SUCCESS = "ITEMS_SUCCESS";
 export const ITEMS_REQUEST = "ITEMS_REQUEST";
 export const ITEM_FAILURE = "ITEM_FAILURE";
 
 export const ITEM_ADDED = "ITEM_ADDED";
 export const ITEM_REMOVED = "ITEM_REMOVED";
-export const USER_UPDATE = "USER_UPDATE"; 
+export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
 
 //asünkroonne
 export const getItems = () => (dispatch, getState) => {
+  const store = getState();
   //kui tooted olemas, ei kutsu getItems fn-i
-  if (getState().items.length > 0) return null;
-  //dispatch(itemsRequest());
-  return fetch("/api/v1/items")
-    .then(res => {
-      return res.json();
-    })
+  if (selectors.getItems(store).length > 0) return null;
+  dispatch(itemsRequest());
+  return services
+    .getItems()
     .then(items => {
       dispatch(itemsSuccess(items));
     })
@@ -48,12 +50,12 @@ export const removeItem = _id => ({
   payload: _id
 });
 
-export const userUpdate = (user) => ({
-    type: USER_UPDATE,
-    payload: user
+export const userUpdate = user => ({
+  type: USER_UPDATE,
+  payload: user
 });
 
 export const tokenUpdate = token => ({
-    type: TOKEN_UPDATE,
-    payload: token
+  type: TOKEN_UPDATE,
+  payload: token
 });

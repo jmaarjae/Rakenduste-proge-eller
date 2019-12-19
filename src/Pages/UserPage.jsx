@@ -6,6 +6,8 @@ import protectedRedirect from "../Components/protectedRedirect.jsx";
 import { userUpdate, tokenUpdate } from "../Store/actions";
 import { UserPropTypes } from "../Store/reducer.js";
 import { connect } from "react-redux";
+import * as selectors from "../Store/selectors.js";
+
 class UserPage extends React.PureComponent {
   static propTypes = {
     user: PropTypes.shape(UserPropTypes),
@@ -34,7 +36,7 @@ class UserPage extends React.PureComponent {
 
 const mapStateToProps = store => {
   return {
-    user: store.user
+    user: selectors.getUser(store)
   };
 };
 

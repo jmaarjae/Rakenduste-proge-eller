@@ -7,6 +7,7 @@ import SortDropdown from "../Components/SortDropdown.jsx";
 import { connect } from "react-redux";
 import { getItems } from "../Store/actions.js";
 import { ItemProps } from "./CartPage.jsx";
+import * as selectors from "../Store/selectors.js";
 
 class HomePage extends React.PureComponent {
   //staatiline tuleb defineerida komponendi sees!
@@ -129,7 +130,7 @@ ItemFilters.propTypes = {
 
 const mapStateToProps = store => {
   return {
-    items: store.items
+    items: selectors.getItems(store)
   };
 };
 

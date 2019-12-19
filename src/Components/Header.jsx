@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ItemProps } from "../Pages/CartPage.jsx";
 import { UserPropTypes } from "../Store/reducer";
+import * as selectors from "../Store/selectors.js";
 
 const Header = ({ user, cart }) => {
   return (
@@ -71,8 +72,8 @@ WelcomeIcon.propTypes = {
 
 const mapStateToProps = store => {
   return {
-    cart: store.cart,
-    user: store.user
+    cart: selectors.getCart(store),
+    user: selectors.getUser(store)
   };
 };
 
