@@ -28,7 +28,7 @@ class LoginPage extends React.PureComponent {
       .then(this.handleSuccess)
       .catch(err => {
         console.log("Error", err);
-        toast.success("Login failed.");
+        toast.error("Login failed.");
       });
   };
 
