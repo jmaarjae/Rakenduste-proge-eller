@@ -12,7 +12,7 @@ const Header = ({ user, cart }) => {
   return (
     <div className="header">
       <Link to={"/"}>
-        <img className="headerLogo" src="/images/Logo.jpg" />
+        <img className="headerLogo" src="static/images/Logo.jpg" />
       </Link>
       <div className="headerButtons">
         {user && <WelcomeIcon user={user} />}

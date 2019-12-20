@@ -6,17 +6,28 @@ module.exports = {
   mode: "production",
   entry: "./src/index.jsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "static/bundle.js"
   },
   devtool: "eval-source-map",
   plugins: [
-    new CleanWebpackPlugin(),
     new CopyPlugin([
       {
-        from: "public"
+        from: "public/index.html"
       }
-    ])
+    ]),
+    new CopyPlugin([
+      {
+        from: "public/images",
+        to: "static/images"
+      }
+    ]),
+    new CopyPlugin([
+      {
+        from: "public/main.css",
+        to: "static/main.css"
+      }
+    ]),
+    new CleanWebpackPlugin()
   ],
   devServer: {
     historyApiFallback: true,
