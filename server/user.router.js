@@ -4,6 +4,22 @@ const User = require("./user.model.js");
 const Item = require("./item.model.js");
 const { authMiddleware } = require("./middlewares.js");
 
+// router.edit(`api/v1/users/${this.props.user._id}`, (req, res, userId) => {
+//   User.findById(userId, (err, user) => {
+//     if (err || !user) return res.status(500).send("Error on editing email");
+//     req.user = user;
+//     console.log("", user.email);
+//     req.user.update({  });
+//     req.user.save(err => {
+//       if (err) {
+//         console.log(err);
+//         return res.status(500).send("Error on editing email");
+//       }
+//       res.sendStatus(200);
+//     });
+//   });
+// });
+
 router.param("userId", (req, res, next, userId) => {
   User.findById(userId, (err, user) => {
     if (err || !user) return res.status(500).send("Error on user param");

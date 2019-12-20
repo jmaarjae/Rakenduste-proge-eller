@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import * as selectors from "../Store/selectors.js";
 import * as services from "../services.js";
+import Modal from "../Components/Modal.jsx";
+import Stripe from "../Components/Stripe.jsx";
 
 class CartPage extends React.PureComponent {
   static propTypes = {
@@ -16,7 +18,8 @@ class CartPage extends React.PureComponent {
   };
 
   state = {
-    cartItems: []
+    cartItems: [],
+    isModalOpen: false
   };
 
   componentDidMount() {
@@ -34,7 +37,7 @@ class CartPage extends React.PureComponent {
 
   fetchItems = () => {
     const promises = this.props.cartItemIds.map(itemId =>
-      services.getItem({itemId})
+      services.getItem({ itemId })
     );
     Promise.all(promises)
       .then(items => {
@@ -64,11 +67,21 @@ class CartPage extends React.PureComponent {
     this.props.dispatch(removeItem(_id));
   };
 
+  handleModal = () => {
+    console.log("handleModal");
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  };
+
   render() {
     const { sum, tax } = this.calcNumbers();
 
     return (
       <>
+        <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
+          <Stripe />
+        </Modal>
         <div className={"spacer"}>
           <div className={"box cart"}>
             <Table onTrash={this.handleTrash} rows={this.state.cartItems} />
@@ -91,7 +104,7 @@ class CartPage extends React.PureComponent {
                 <tr>
                   <td></td>
                   <td>
-                    <FancyButton onClick={() => console.log("Vormista ost!")}>
+                    <FancyButton onClick={this.handleModal}>
                       Vormista ost
                     </FancyButton>
                   </td>

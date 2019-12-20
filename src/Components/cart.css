@@ -67,3 +67,11 @@
 .cart .row:last-child {
   border-bottom: 0;
 }
+
+.trashButton {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.trashButton:hover {
+  color: rgba(247, 195, 25, 0.5);
+}
