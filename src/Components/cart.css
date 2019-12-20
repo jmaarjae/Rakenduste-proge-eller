@@ -35,7 +35,7 @@
 }
 
 .cell--right {
-  text-align: right;
+  text-align: end;
 }
 
 .cart .row:first-child {

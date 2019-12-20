@@ -10,9 +10,12 @@ const database = require("./database.js");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(apiRouter);
-
+/** For images and bundle.js */
 app.use("/static", express.static("dist/static"));
+
+/** For index.html */
 app.use("/*", express.static("dist"));
+
 app.use(express.static("dist"));
 
 //Cuz Heroku needs process.env.PORT
