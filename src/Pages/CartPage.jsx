@@ -74,44 +74,49 @@ class CartPage extends React.PureComponent {
     });
   };
 
+  handleSubmit = () => {
+    //sulgeb
+    this.handleModal();
+  };
+
   render() {
-    const { sum, tax } = this.calcNumbers();
+    const { sum } = this.calcNumbers();
 
     return (
       <>
         <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
-          <Stripe />
+          <Stripe sum={sum} onSubmit={this.handleSubmit} />
         </Modal>
         <div className={"spacer"}>
           <div className={"box cart"}>
             <Table onTrash={this.handleTrash} rows={this.state.cartItems} />
           </div>
-          <div className={"box cart__summary"}>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Vahesumma</td>
-                  <td>{sum} €</td>
-                </tr>
-                <tr>
-                  <td>Maksud</td>
-                  <td>{tax} €</td>
-                </tr>
-                <tr>
-                  <td>Kokku</td>
-                  <td>{tax + sum} €</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <FancyButton onClick={this.handleModal}>
-                      Vormista ost
-                    </FancyButton>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {/* Kui cart pole tyhi */}
+          {this.state.cartItems.length > 0 && (
+            <div className={"box cart__summary"}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Vahesumma</td>
+                    <td>{sum} €</td>
+                  </tr>
+
+                  <tr>
+                    <td>Kokku</td>
+                    <td>{sum} €</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <FancyButton onClick={this.handleModal}>
+                        Vormista ost
+                      </FancyButton>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </>
     );

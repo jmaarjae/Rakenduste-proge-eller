@@ -94,4 +94,28 @@ function handleError(err, res) {
   res.send(500);
 }
 
+//asyc ehk asynkroonne
+
+//arvutab ostukorvi summa(getCartAmount), 
+//loob uue paymenti(createPayment),
+//salvestab andmebaasi,
+//tyhjendab ostukorvi
+
+router.post("/:userId/checkout", authMiddleware, async (req, res) => {
+  const { error, amount } = await req.user.getCartAmount();
+  //console.log(req.body);
+  if (error) return res.send(500);
+  req.user
+    .createPayment(amount)
+    .then(() => {
+      return req.user.clearCart();
+    })
+    .then(() => {
+      res.send(200);
+    })
+    .catch(() => {
+      res.send(500);
+    });
+});
+
 module.exports = router;

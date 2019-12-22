@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+import Item from "./item.model.js";
+const Payment = require("./payments.model");
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -63,6 +65,44 @@ userSchema.statics.signup = function({ email, password }) {
           _id: user._id
         });
       });
+    });
+  });
+};
+
+userSchema.methods.getCartAmount = async function() {
+  const items = Item.getItems(this.cart);
+  console.log("items", items);
+  const amount = items.reduce((acc, item) => acc + item.price, 0);
+  return { error: null, amount };
+};
+
+userSchema.methods.createPayment = function(amount) {
+  const payment = new Payment({
+    amount,
+    userId: this._id,
+    cart: this.cart
+  });
+
+  return new Promise((resolve, reject) => {
+    payment.save(err => {
+      if (err) {
+        console.log("user.model: payment error", err);
+        return reject("Payment creation failed.");
+      }
+      resolve("Payment successfully created");
+    });
+  });
+};
+
+userSchema.methods.clearCart = function() {
+  return new Promise((resolve, reject) => {
+    this.cart = [];
+    this.save(err => {
+      if (err) {
+        console.log("err", err);
+        return reject("Cart clearing failed.");
+      }
+      return resolve("Cart successfully cleared.");
     });
   });
 };
