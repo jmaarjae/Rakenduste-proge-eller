@@ -5,8 +5,8 @@ import "./stripe.css";
 import { injectStripe } from "react-stripe-elements";
 import PropTypes from "prop-types";
 import * as services from "../services";
-import * as selectors from "../store/selectors";
-import * as actions from "../store/actions";
+import * as selectors from "../Store/selectors";
+import * as actions from "../Store/actions";
 import { connect } from "react-redux";
 
 class Stripe extends React.PureComponent {
