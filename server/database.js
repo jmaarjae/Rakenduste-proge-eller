@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 const DB = require("./database.js");
 const mongoose = require("mongoose");
+mongoose.set("useFindAndModify", false);
 const Item = require("./item.model.js");
 
 const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-r8uc0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;

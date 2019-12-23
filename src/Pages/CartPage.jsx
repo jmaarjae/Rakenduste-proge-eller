@@ -97,19 +97,19 @@ class CartPage extends React.PureComponent {
               <table>
                 <tbody>
                   <tr>
-                    <td>Vahesumma</td>
+                    <td>Subtotal</td>
                     <td>{sum} €</td>
                   </tr>
 
                   <tr>
-                    <td>Kokku</td>
+                    <td>Total</td>
                     <td>{sum} €</td>
                   </tr>
                   <tr>
                     <td></td>
                     <td>
                       <FancyButton onClick={this.handleModal}>
-                        Vormista ost
+                        Purchase
                       </FancyButton>
                     </td>
                   </tr>
@@ -127,10 +127,10 @@ const Table = ({ rows, onTrash }) => {
   return (
     <div className={"table"}>
       <div className={"row"}>
-        <div className={"cell"}>Toode</div>
-        <div className={"cell cell-grow"}>Nimetus</div>
-        <div className={"cell"}>Kategooria</div>
-        <div className={"cell cell--right"}>Summa</div>
+        <div className={"cell"}>Product</div>
+        <div className={"cell cell-grow"}>Name</div>
+        <div className={"cell"}>Category</div>
+        <div className={"cell cell--right"}>Sum</div>
         <div className={"cell cell--small"}></div>
       </div>
       {rows.map((row, index) => (

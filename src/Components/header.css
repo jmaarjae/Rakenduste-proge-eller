@@ -1,7 +1,7 @@
 .header {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  /* background: rgb(245, 201, 6); */
-  background: #ffffff;
+  z-index: 100;
+  background: white;
   padding: 10px 25px;
   display: flex;
   justify-content: space-between;
@@ -14,11 +14,11 @@
   width: 50px;
 }
 .headerButtons {
-  width: 16%;
+  display: flex;
   justify-content: space-between;
-  display:flex;
+  align-items: center;
+  margin-right: 80px;
 }
-
 .headerButton:hover {
   color: rgb(245, 201, 6);
 }
@@ -31,22 +31,22 @@
   display: flex;
   align-items: center;
   height: 100%;
-  color: rgb(0, 0, 0);
-  transition: all 0.4s;
+  color: rgba(0, 0, 0);
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .headerButton-text {
-  margin-left: 10px;
+  padding-left: 5px;
   font-size: 14px;
 }
 
 .badge {
-  position: "absolute";
-  padding: 2px 4px;
   background: rgb(245, 201, 6);
-  margin-left: 4px;
+  position: absolute;
+  padding: 1px 5px;
+  margin-top: 15;
+  margin-left: 12px;
   color: white;
   border-radius: 100%;
 }
-

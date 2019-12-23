@@ -55,7 +55,7 @@ class ItemPage extends React.PureComponent {
                 <p style={{ textAlign: "justify" }}>{loremIpsum}</p>
               </div>
               <div className={"itemPageFooter"}>
-                <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
+                <FancyButton onClick={this.handleBuy}>Buy</FancyButton>
               </div>
             </div>
           </div>

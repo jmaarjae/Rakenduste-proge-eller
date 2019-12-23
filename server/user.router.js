@@ -6,21 +6,24 @@ const { authMiddleware } = require("./middlewares.js");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const Payment = require("./payments.model");
 
-// router.edit(`api/v1/users/${this.props.user._id}`, (req, res, userId) => {
-//   User.findById(userId, (err, user) => {
-//     if (err || !user) return res.status(500).send("Error on editing email");
-//     req.user = user;
-//     console.log("", user.email);
-//     req.user.update({  });
-//     req.user.save(err => {
-//       if (err) {
-//         console.log(err);
-//         return res.status(500).send("Error on editing email");
-//       }
-//       res.sendStatus(200);
-//     });
-//   });
-// });
+router.post("/:userId", async (req, res) => {
+  console.log("router", req.user._id, req.body.email);
+  let doc = await User.findOne({ _id: req.user._id });
+  doc.email = req.body.email;
+  await doc.save();
+  if (doc.email !== req.body.email) {
+    return res.status(500).send("Error on editing email");
+  }
+  res.sendStatus(200);
+  // await User.findOneAndUpdate({ id: req.user._id }, { email: req.body.email });
+  // req.user.save(err => {
+  //   if (err) {
+  //     console.log(err);
+  //     return res.status(500).send("Error on cart save");
+  //   }
+  //   res.sendStatus(200);
+  // });
+});
 
 router.param("userId", (req, res, next, userId) => {
   User.findById(userId, (err, user) => {
