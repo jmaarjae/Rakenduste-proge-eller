@@ -5,6 +5,7 @@
   },
   "version": "1.0.0",
   "scripts": {
+    "test": "jest",
     "build": "webpack",
     "start": "node server/server.js",
     "start:prelive": "npm run build && set PORT=3001 && npm run start",
@@ -51,8 +52,10 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^5.0.2",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.3",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^16.12.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9",
