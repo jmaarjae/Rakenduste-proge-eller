@@ -3,6 +3,24 @@ const router = express.Router();
 const User = require("./user.model.js");
 const Item = require("./item.model.js");
 const { authMiddleware } = require("./middlewares.js");
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const Payment = require("./payments.model");
+
+// router.edit(`api/v1/users/${this.props.user._id}`, (req, res, userId) => {
+//   User.findById(userId, (err, user) => {
+//     if (err || !user) return res.status(500).send("Error on editing email");
+//     req.user = user;
+//     console.log("", user.email);
+//     req.user.update({  });
+//     req.user.save(err => {
+//       if (err) {
+//         console.log(err);
+//         return res.status(500).send("Error on editing email");
+//       }
+//       res.sendStatus(200);
+//     });
+//   });
+// });
 
 router.param("userId", (req, res, next, userId) => {
   User.findById(userId, (err, user) => {
@@ -77,5 +95,49 @@ function handleError(err, res) {
   console.log(err);
   res.send(500);
 }
+
+router.get("/:userId/payments", authMiddleware, (req, res) => {
+  Payment.getUserPayments(req.user._id)
+    .then(docs => {
+      res.send(docs);
+    })
+    .catch(err => {
+      console.log("user router: payments error", err);
+      res.send(500);
+    });
+});
+
+//asyc ehk asynkroonne
+
+//arvutab ostukorvi summa(getCartAmount),
+//loob uue paymenti(createPayment),
+//salvestab andmebaasi,
+//tyhjendab ostukorvi
+
+router.post("/:userId/checkout", authMiddleware, async (req, res) => {
+  const { error, amount } = await req.user.getCartAmount();
+  //console.log(req.body);
+  if (error) return res.send(500);
+  req.user
+    .createPayment(amount)
+    .then(() => {
+      return req.user.clearCart();
+    })
+    .then(() => {
+      return stripe.charges.create({
+        //sest tegu sentidega
+        amount: amount * 100,
+        currency: "eur",
+        source: req.body.id
+      });
+    })
+    .then(stripeResponse => {
+      console.log("stripe res", stripeResponse);
+      res.send(200);
+    })
+    .catch(() => {
+      res.send(500);
+    });
+});
 
 module.exports = router;

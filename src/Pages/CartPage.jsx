@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import * as selectors from "../Store/selectors.js";
 import * as services from "../services.js";
+import Modal from "../Components/Modal.jsx";
+import Stripe from "../Components/Stripe.jsx";
 
 class CartPage extends React.PureComponent {
   static propTypes = {
@@ -16,7 +18,8 @@ class CartPage extends React.PureComponent {
   };
 
   state = {
-    cartItems: []
+    cartItems: [],
+    isModalOpen: false
   };
 
   componentDidMount() {
@@ -34,7 +37,7 @@ class CartPage extends React.PureComponent {
 
   fetchItems = () => {
     const promises = this.props.cartItemIds.map(itemId =>
-      services.getItem({itemId})
+      services.getItem({ itemId })
     );
     Promise.all(promises)
       .then(items => {
@@ -64,41 +67,56 @@ class CartPage extends React.PureComponent {
     this.props.dispatch(removeItem(_id));
   };
 
+  handleModal = () => {
+    console.log("handleModal");
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  };
+
+  handleSubmit = () => {
+    //sulgeb
+    this.handleModal();
+  };
+
   render() {
-    const { sum, tax } = this.calcNumbers();
+    const { sum } = this.calcNumbers();
 
     return (
       <>
+        <Modal open={this.state.isModalOpen} onClose={this.handleModal}>
+          <Stripe sum={sum} onSubmit={this.handleSubmit} />
+        </Modal>
         <div className={"spacer"}>
           <div className={"box cart"}>
             <Table onTrash={this.handleTrash} rows={this.state.cartItems} />
           </div>
-          <div className={"box cart__summary"}>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Vahesumma</td>
-                  <td>{sum} €</td>
-                </tr>
-                <tr>
-                  <td>Maksud</td>
-                  <td>{tax} €</td>
-                </tr>
-                <tr>
-                  <td>Kokku</td>
-                  <td>{tax + sum} €</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <FancyButton onClick={() => console.log("Vormista ost!")}>
-                      Vormista ost
-                    </FancyButton>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {/* Kui cart pole tyhi */}
+          {this.state.cartItems.length > 0 && (
+            <div className={"box cart__summary"}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Vahesumma</td>
+                    <td>{sum} €</td>
+                  </tr>
+
+                  <tr>
+                    <td>Kokku</td>
+                    <td>{sum} €</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <FancyButton onClick={this.handleModal}>
+                        Vormista ost
+                      </FancyButton>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </>
     );
