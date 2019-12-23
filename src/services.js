@@ -80,10 +80,22 @@ export const checkout = ({ stripeToken, userId, token }) => {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     },
     body: JSON.stringify(stripeToken)
   }).then(res => {
     if (!res.ok) throw "services: checkout failed";
+  });
+};
+
+export const getPayments = ({ userId, token }) => {
+  return fetch(`${basePath}/users/${userId}/payments`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(res => {
+    if (!res.ok) throw "services: getPayments failed";
+    return res.json();
   });
 };

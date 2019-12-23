@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-import Item from "./item.model.js";
+const Item = require("./item.model");
 const Payment = require("./payments.model");
 
 const userSchema = new mongoose.Schema({
@@ -70,7 +70,7 @@ userSchema.statics.signup = function({ email, password }) {
 };
 
 userSchema.methods.getCartAmount = async function() {
-  const items = Item.getItems(this.cart);
+  const items = await Item.getItems(this.cart);
   console.log("items", items);
   const amount = items.reduce((acc, item) => acc + item.price, 0);
   return { error: null, amount };

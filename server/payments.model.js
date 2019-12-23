@@ -6,6 +6,12 @@ const paymentsSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId },
   createdAt: { type: Date, default: Date.now }
 });
+//static
+paymentsSchema.statics.getUserPayments = function(userId) {
+  return this.find({
+    userId: userId
+  });
+};
 
 const Payment = mongoose.model("Payment", paymentsSchema);
 

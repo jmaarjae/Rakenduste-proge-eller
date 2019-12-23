@@ -8,7 +8,7 @@
   border-radius: 5px;
   padding: 15px;
   background: white;
-  border: 1px solid #3333332b;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .trashButton:hover {
@@ -17,7 +17,7 @@
   transition: all 0.2s;
 }
 
-.field{
+.field {
   padding: 5px 15px;
   border: 0;
   border-radius: 5px;
@@ -25,4 +25,10 @@
   align-items: center;
 }
 
-
+.paymentRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 5px;
+  border: 1px solid rgba(177, 177, 177, 0.2);
+}

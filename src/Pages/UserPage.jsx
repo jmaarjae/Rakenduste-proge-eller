@@ -7,12 +7,15 @@ import { userUpdate, tokenUpdate } from "../Store/actions";
 import { UserPropTypes } from "../Store/reducer.js";
 import { connect } from "react-redux";
 import * as selectors from "../Store/selectors.js";
+import * as services from "../services.js";
 // import { toast } from "react-toastify";
 
 class UserPage extends React.PureComponent {
   static propTypes = {
     user: PropTypes.shape(UserPropTypes),
     dispatch: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired
     // history: PropTypes.object.isRequired
   };
   // constructor(props) {
@@ -21,6 +24,20 @@ class UserPage extends React.PureComponent {
   //     email: ""
   //   };
   // }
+
+  state = {
+    payments: []
+  };
+
+  componentDidMount() {
+    const { userId, token } = this.props;
+    services.getPayments({ userId, token }).then(docs => {
+      console.log("docs", docs);
+      this.setState({
+        payments: docs
+      });
+    });
+  }
 
   handleLogout = () => {
     this.props.dispatch(userUpdate(null));
@@ -66,6 +83,17 @@ class UserPage extends React.PureComponent {
             <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
           </div>
         </div>
+        <div className={"box"}>
+          {this.state.payments.map(payment => {
+            return (
+              <div key={payment._id} className={"paymentRow"}>
+                <div>{payment.createdAt}</div>
+                <div>{payment.cart.length}</div>
+                <div>{payment.amount}</div>
+              </div>
+            );
+          })}
+        </div>
         {/* <form className="edit-form" onSubmit={this.handleSubmit}>
           <input
             type="email"
@@ -83,7 +111,9 @@ class UserPage extends React.PureComponent {
 
 const mapStateToProps = store => {
   return {
-    user: selectors.getUser(store)
+    user: selectors.getUser(store),
+    userId: selectors.getUserId(store),
+    token: selectors.getToken(store)
   };
 };
 
