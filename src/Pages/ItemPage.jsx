@@ -6,6 +6,7 @@ import FancyButton from "../Components/FancyButton.jsx";
 import { connect } from "react-redux";
 import { addItem } from "../Store/actions.js";
 import * as services from "../services";
+import { toast } from "react-toastify";
 
 class ItemPage extends React.PureComponent {
   static propTypes = {
@@ -15,7 +16,9 @@ class ItemPage extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      changeTitle: ""
+    };
   }
 
   componentDidMount() {
@@ -39,6 +42,32 @@ class ItemPage extends React.PureComponent {
     this.props.dispatch(addItem(this.state));
   };
 
+  handleTitleEditSubmit = e => {
+    e.preventDefault();
+    console.log("submit", `api/v1/items/${this.props.match.params.itemId}`);
+    fetch(`api/v1/items/${this.props.match.params.itemId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(() => {
+        toast.success("Item title successfully changed!");
+      })
+      .catch(err => {
+        console.log("Error", err);
+        toast.error("Editing item title failed!");
+      });
+  };
+
+  handleTitleChange = e => {
+    // console.log("handle title change", e.target.name, e.target.value);
+    this.setState({
+      changeTitle: e.target.value
+    });
+  };
+
   render() {
     console.log("this.props", this.props);
     // console.log("itemID", this.props.match.params.itemId);
@@ -46,16 +75,28 @@ class ItemPage extends React.PureComponent {
     return (
       <>
         <div className={"box spacer itemPageContainer"}>
-          <div style={{ display: "flex" }}>
-            <img className={"itemPageImage"} src={this.state.imgSrc} />
-            <div className={"itemPageContent"}>
-              <div className={"itemTitle"}>{this.state.title}</div>
-              <div className={"itemCost"}>{this.state.price} €</div>
-              <div>
-                <p style={{ textAlign: "justify" }}>{loremIpsum}</p>
-              </div>
-              <div className={"itemPageFooter"}>
-                <FancyButton onClick={this.handleBuy}>Buy</FancyButton>
+          <form className="editTitleForm" onSubmit={this.handleTitleEditSubmit}>
+            <input
+              type="string"
+              placeholder="Edit item title"
+              name="title"
+              value={this.state.changeTitle}
+              onChange={this.handleTitleChange}
+            />
+            <button>Edit</button>
+          </form>
+          <div>
+            <div style={{ display: "flex" }}>
+              <img className={"itemPageImage"} src={this.state.imgSrc} />
+              <div className={"itemPageContent"}>
+                <div className={"itemTitle"}>{this.state.title}</div>
+                <div className={"itemCost"}>{this.state.price} €</div>
+                <div>
+                  <p style={{ textAlign: "justify" }}>{loremIpsum}</p>
+                </div>
+                <div className={"itemPageFooter"}>
+                  <FancyButton onClick={this.handleBuy}>Buy</FancyButton>
+                </div>
               </div>
             </div>
           </div>

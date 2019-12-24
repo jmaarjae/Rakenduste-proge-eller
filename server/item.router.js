@@ -12,9 +12,20 @@ router.delete("/:itemId", (req, res) => {
   });
 });
 
+//edit item title
+router.post("/:itemId", async (req, res) => {
+    console.log("router", req.params.itemId, req.body.changeTitle);
+    let doc = await Item.findOne({ _id: req.params.itemId});
+    doc.title = req.body.changeTitle;
+    await doc.save();
+    if (doc.title !== req.body.changeTitle) {
+      return res.status(500).send("Error on editing item title");
+    }
+    res.sendStatus(200);
+  });
+
 // creates a new item
 router.post("/", (req, res) => {
-  console.log("item router: req.body.imgSrc", req.body.imgSrc);
   const props = {
     imgSrc: req.body.imgSrc,
     title: req.body.title,
