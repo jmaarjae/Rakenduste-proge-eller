@@ -4,7 +4,7 @@ const itemSchema = new mongoose.Schema({
   imgSrc: { type: String, required: true },
   title: { type: String, required: true },
   price: { type: Number, required: true },
-  category: { type: String, required: true },
+  category: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 

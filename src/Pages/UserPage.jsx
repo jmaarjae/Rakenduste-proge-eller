@@ -22,6 +22,9 @@ class UserPage extends React.PureComponent {
     super(props);
     this.state = {
       email: "",
+      title: "",
+      imgSrc: "",
+      price: "",
       payments: []
     };
   }
@@ -41,16 +44,13 @@ class UserPage extends React.PureComponent {
     this.props.dispatch(tokenUpdate(null));
   };
 
-  handleSubmit = e => {
+  handleEmailEditSubmit = e => {
     e.preventDefault();
-    // const { userId } = this.props;
     console.log("submit", `api/v1/users/${this.props.user._id}`);
-    // services.updateEmail(this.props);
     fetch(`api/v1/users/${this.props.user._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
-        // Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(this.state)
     })
@@ -64,12 +64,39 @@ class UserPage extends React.PureComponent {
       });
   };
 
-  handleChange = e => {
-    console.log("handle change", e.target.name, e.target.value);
+  handleEmailChange = e => {
+    // console.log("handle change", e.target.name, e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
+  handleAddItemSubmit = e => {
+    e.preventDefault();
+    console.log("submit: add item", `api/v1/items/${this.props}`);
+    fetch("api/v1/items/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(() => {
+        toast.success("Item successfully added!");
+      })
+      .catch(err => {
+        console.log("Error", err);
+        toast.error("Adding item failed!");
+      });
+  };
+
+  handleAddItem = e => {
+    // console.log("handle add item", e.target.name, e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className={"spacer"}>
@@ -92,15 +119,41 @@ class UserPage extends React.PureComponent {
           })}
         </div>
         <div className={"box"}>
-          <form className="editForm" onSubmit={this.handleSubmit}>
+          <form className="editForm" onSubmit={this.handleEmailEditSubmit}>
             <input
               type="email"
               placeholder="Edit email"
               name="email"
               value={this.state.email}
-              onChange={this.handleChange}
+              onChange={this.handleEmailChange}
             />
             <button>Edit</button>
+          </form>
+        </div>
+        <div className={"box"}>
+          <form className="addItemForm" onSubmit={this.handleAddItemSubmit}>
+            <input
+              type="string"
+              placeholder="Item title"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleAddItem}
+            />
+            <input
+              type="string"
+              placeholder="Image source"
+              name="imgSrc"
+              value={this.state.imgSrc}
+              onChange={this.handleAddItem}
+            />
+            <input
+              type="number"
+              placeholder="Price"
+              name="price"
+              value={this.state.price}
+              onChange={this.handleAddItem}
+            />
+            <button>Add Item</button>
           </form>
         </div>
       </div>

@@ -13,7 +13,7 @@ class HomePage extends React.PureComponent {
   //staatiline tuleb defineerida komponendi sees!
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired
+    items: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
   };
 
   constructor(props) {

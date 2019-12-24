@@ -128,7 +128,7 @@ router.post("/:userId/checkout", authMiddleware, async (req, res) => {
     })
     .then(stripeResponse => {
       console.log("stripe res", stripeResponse);
-      res.send(200);
+      res.sendStatus(200);
     })
     .catch(() => {
       res.send(500);

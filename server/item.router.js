@@ -14,21 +14,21 @@ router.delete("/:itemId", (req, res) => {
 
 // creates a new item
 router.post("/", (req, res) => {
+  console.log("item router: req.body.imgSrc", req.body.imgSrc);
   const props = {
-    imgSrc: "google.com",
-    title: "Yamaha white digital piano",
-    price: 1200,
-    category: "Digital Pianos"
+    imgSrc: req.body.imgSrc,
+    title: req.body.title,
+    price: req.body.price
   };
-  const item1 = new Item(props);
-  item1.save(err => {
+  const newItem = new Item(props);
+  newItem.save(err => {
     if (err) {
       console.log("Error", err);
       res.send(500);
       return;
     }
     console.log("Successful createItem!");
-    res.send(201);
+    res.sendStatus(201);
   });
 });
 

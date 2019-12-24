@@ -50,10 +50,11 @@ export const addItem = item => (dispatch, getState) => {
 };
 
 //asünkroonne
-export const getItems = () => (dispatch, getState) => {
-  const store = getState();
+// export const getItems = () => (dispatch, getState) => {
+export const getItems = () => dispatch => {
+  // const store = getState();
   //kui tooted olemas, ei kutsu getItems fn-i
-  if (selectors.getItems(store).length > 0) return null;
+  // if (selectors.getItems(store).length > 0) return null;
   dispatch(itemsRequest());
   return services
     .getItems()

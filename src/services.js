@@ -75,20 +75,6 @@ export const signup = ({ email, password }) => {
   });
 };
 
-// export const updateEmail = ({ email, userId }) => {
-//   return fetch(`${basePath}/users/${userId}`, {
-//     method: "POST",
-//     headers: {
-//       "content-type": "application/json"
-//     },
-//     body: JSON.stringify({ email, userId })
-//   }).then(res => {
-//     console.log({res});
-//     if (!res.ok) throw "updateEmail failed";
-//     return res.json();
-//   });
-// };
-
 export const checkout = ({ stripeToken, userId, token }) => {
   return fetch(`${basePath}/users/${userId}/checkout`, {
     method: "POST",
@@ -113,5 +99,3 @@ export const getPayments = ({ userId, token }) => {
     return res.json();
   });
 };
-
-
