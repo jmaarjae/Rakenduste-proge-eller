@@ -15,14 +15,6 @@ router.post("/:userId", async (req, res) => {
     return res.status(500).send("Error on editing email");
   }
   res.sendStatus(200);
-  // await User.findOneAndUpdate({ id: req.user._id }, { email: req.body.email });
-  // req.user.save(err => {
-  //   if (err) {
-  //     console.log(err);
-  //     return res.status(500).send("Error on cart save");
-  //   }
-  //   res.sendStatus(200);
-  // });
 });
 
 router.param("userId", (req, res, next, userId) => {
@@ -141,6 +133,17 @@ router.post("/:userId/checkout", authMiddleware, async (req, res) => {
     .catch(() => {
       res.send(500);
     });
+});
+//jesti jaoks
+router.post("/", (req, res) => {
+  User.signup(req.body)
+  .then( user =>{
+    res.status(200).json(user);
+  })
+  .catch( err =>{
+    console.log('err', err);
+    res.send(500);
+  });
 });
 
 module.exports = router;
